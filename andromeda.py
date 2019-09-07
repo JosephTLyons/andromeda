@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-from pathlib import Path
 from random import shuffle
 from string import *
 
@@ -116,6 +115,7 @@ def increaseIndexVectorBy(indexVctor, rolloverNumber, distanceBetweenSerialNumbe
         distanceBetweenSerialNumbers = int(distanceBetweenSerialNumbers / rolloverNumber)
 
 def printPathToTerminal(fileName):
+    Path.cwd()
     filePath = os.path.dirname(os.path.realpath(__file__)) + "/" + fileName
     print("File path: {}".format(filePath))
 
