@@ -102,8 +102,8 @@ def increaseIndexVectorBy(indexVctor, rolloverNumber, distanceBetweenSerialNumbe
         distanceBetweenSerialNumbers = int(distanceBetweenSerialNumbers / rolloverNumber)
 
 def printPathToTerminal(fileName):
-    dirPath = os.path.dirname(os.path.realpath(__file__)) + "/" + fileName
-    print("File path: {}".format(dirPath))
+    filePath = os.path.dirname(os.path.realpath(__file__)) + "/" + fileName
+    print("File path: {}".format(filePath))
 
 def printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers):
     print("Requested serial number amount: {}".format(numberOfSerials))
