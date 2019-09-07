@@ -18,14 +18,9 @@ def main():
 
 def generateSerialNumbers(numberOfSerials, lengthOfSerial, useNumber,
                           useUppercase, useLowercase, useSymbols):
-    characterList = createCharacterList(useNumber, useUppercase, useLowercase, useSymbols)
-    listOfCharacterLists = []
-
-    for i in range(0, lengthOfSerial):
-        shuffle(characterList)
-        listOfCharacterLists.append(deepcopy(characterList))
-
-    totalPossibleSerialNumbers = len(characterList) ** lengthOfSerial
+    listOfCharacterLists = createListOfCharacterLists(lengthOfSerial, useNumber, useUppercase,
+                                                      useLowercase, useSymbols)
+    totalPossibleSerialNumbers = len(listOfCharacterLists[0]) ** lengthOfSerial
 
     if (totalPossibleSerialNumbers < numberOfSerials):
         endWithErrorMessage(numberOfSerials, totalPossibleSerialNumbers)
@@ -38,6 +33,16 @@ def generateSerialNumbers(numberOfSerials, lengthOfSerial, useNumber,
         print()
         printPathToTerminal(fileName)
         printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers)
+
+def createListOfCharacterLists(lengthOfSerial, useNumber, useUppercase, useLowercase, useSymbols):
+    characterList = createCharacterList(useNumber, useUppercase, useLowercase, useSymbols)
+    listOfCharacterLists = []
+
+    for i in range(0, lengthOfSerial):
+        shuffle(characterList)
+        listOfCharacterLists.append(deepcopy(characterList))
+
+    return listOfCharacterLists
 
 def endWithErrorMessage(numberOfSerials, totalPossibleSerialNumbers):
     print("Requested serial number amount: {}".format(numberOfSerials))
