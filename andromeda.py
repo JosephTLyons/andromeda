@@ -80,11 +80,17 @@ def printSerialNumbersToFile(fileName, numberOfSerials, lengthOfSerial,
 
         singleSerialNumberString = ""
 
-        # print_index_vector(&indexList)
+        # printIndexList(indexList)
 
         increaseIndexVectorBy(indexList, len(listOfCharacterLists[0]), distanceBetweenSerialNumbers)
 
     serialFile.close()
+
+def printIndexList(indexList):
+    for index in indexList:
+        print(str(index).rjust(3), end = '')
+
+    print();
 
 def increaseIndexVectorBy(indexVctor, rolloverNumber, distanceBetweenSerialNumbers):
     increaseValueAtIndexXBy = 0
