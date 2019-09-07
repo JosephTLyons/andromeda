@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-from copy import deepcopy
+from pathlib import Path
 from random import shuffle
 from string import *
 
@@ -33,7 +33,7 @@ def createListOfCharacterLists(lengthOfSerial, useNumber, useUppercase, useLower
 
     for i in range(0, lengthOfSerial):
         shuffle(characterList)
-        listOfCharacterLists.append(deepcopy(characterList))
+        listOfCharacterLists.append(characterList.copy())
 
     return listOfCharacterLists
 
