@@ -24,12 +24,6 @@ def generateSerialNumbers(numberOfSerials, lengthOfSerial, useNumber,
         shuffle(characters)
         listOfCharacterLists.append(deepcopy(characters))
 
-    # Delet this
-    # for i in listOfCharacterLists:
-    #     print(i)
-    #     print()
-    #     print()
-
     totalPossibleSerialNumbers = len(characters) ** lengthOfSerial
 
     if (totalPossibleSerialNumbers < numberOfSerials):
