@@ -67,6 +67,7 @@ def generateSerialNumbers(numberOfSerials, lengthOfSerial, listOfCharacterLists,
                              listOfCharacterLists, totalPossibleSerialNumbers)
     print()
     printPathToTerminal(fileName)
+    print()
     printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers)
 
 def printSerialNumbersToFile(fileName, numberOfSerials, lengthOfSerial,
@@ -116,7 +117,6 @@ def printPathToTerminal(fileName):
     print("File path: {}".format(filePath))
 
 def printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers):
-    print()
     print("Requested serial number amount: {}".format(numberOfSerials))
     print("Total possible serial numbers given current inputs: {}".format(totalPossibleSerialNumbers))
     print("The printed licenses cover {}% of the total license pool".format((numberOfSerials / totalPossibleSerialNumbers) * 100))
