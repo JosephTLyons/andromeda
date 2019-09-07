@@ -28,12 +28,7 @@ def generateSerialNumbers(numberOfSerials, lengthOfSerial, useNumber,
     totalPossibleSerialNumbers = len(characters) ** lengthOfSerial
 
     if (totalPossibleSerialNumbers < numberOfSerials):
-        print("Requested serial number amount: {}".format(numberOfSerials))
-        print("Total possible serial numbers given current inputs: {}".format(totalPossibleSerialNumbers))
-        print("Try one or more of the following:")
-        print("- Increasing the length of the serial numbers")
-        print("- Allowing more types of symbols to be used")
-        print("- Decreasing the amount of serial numbers to be generated")
+        endWithErrorMessage(numberOfSerials, totalPossibleSerialNumbers)
 
     else:
         fileName = str(numberOfSerials) + "_unique_serials.txt"
@@ -43,6 +38,14 @@ def generateSerialNumbers(numberOfSerials, lengthOfSerial, useNumber,
         print()
         printPathToTerminal(fileName)
         printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers)
+
+def endWithErrorMessage(numberOfSerials, totalPossibleSerialNumbers):
+    print("Requested serial number amount: {}".format(numberOfSerials))
+    print("Total possible serial numbers given current inputs: {}".format(totalPossibleSerialNumbers))
+    print("Try one or more of the following:")
+    print("- Increasing the length of the serial numbers")
+    print("- Allowing more types of symbols to be used")
+    print("- Decreasing the amount of serial numbers to be generated")
 
 def createCharacterList(useNumber, useUppercase, useLowercase, useSymbols):
     characaters = []
