@@ -81,10 +81,7 @@ def printSerialNumbersToFile(fileName, numberOfSerials, lengthOfSerial,
         for y in range(lengthOfSerial):
             singleSerialNumberString += listOfCharacterLists[y][indexList[y]]
 
-        # Write single serial number to file
-        singleSerialNumberString += "\n"
-        serialFile.write(singleSerialNumberString)
-
+        serialFile.write(singleSerialNumberString + "\n")
         singleSerialNumberString = ""
 
         # printIndexList(indexList)
