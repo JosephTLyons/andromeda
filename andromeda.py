@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 from copy import deepcopy
 from random import shuffle
 from string import *
@@ -42,7 +43,6 @@ def generateSerialNumbers(numberOfSerials, lengthOfSerial, useNumber,
 
         # println!()
         #
-        # print_path_to_terminal(&file_name)
         # print_stats_to_terminal(&number_of_serials, &total_possible_combinations)
 
 def createCharacterList(useNumber, useUppercase, useLowercase, useSymbols):
@@ -102,4 +102,7 @@ def increaseIndexVectorBy(indexVctor, rolloverNumber, distanceBetweenSerialNumbe
 
         distanceBetweenSerialNumbers = int(distanceBetweenSerialNumbers / rolloverNumber)
 
+def printPathToTerminal(fileName):
+    dirPath = os.path.dirname(os.path.realpath(__file__)) + "/" + fileName
+    print("File path: {}".format(dirPath))
 main()
