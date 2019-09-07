@@ -30,7 +30,7 @@ def createListOfCharacterLists(lengthOfSerial, useNumber, useUppercase, useLower
     characterList = createCharacterList(useNumber, useUppercase, useLowercase, useSymbols)
     listOfCharacterLists = []
 
-    for i in range(0, lengthOfSerial):
+    for i in range(lengthOfSerial):
         shuffle(characterList)
         listOfCharacterLists.append(characterList.copy())
 
@@ -77,8 +77,8 @@ def printSerialNumbersToFile(fileName, numberOfSerials, lengthOfSerial,
     indexList = [0] * lengthOfSerial
     distanceBetweenSerialNumbers = int(totalPossibleSerialNumbers / numberOfSerials)
 
-    for _ in range(0, numberOfSerials):
-        for y in range(0, lengthOfSerial):
+    for _ in range(numberOfSerials):
+        for y in range(lengthOfSerial):
             singleSerialNumberString += listOfCharacterLists[y][indexList[y]]
 
         # Write single serial number to file
@@ -102,7 +102,7 @@ def printIndexList(indexList):
 def increaseIndexVectorBy(indexVctor, rolloverNumber, distanceBetweenSerialNumbers):
     increaseValueAtIndexXBy = 0
 
-    for x in reversed(range(0, len(indexVctor))):
+    for x in reversed(range(len(indexVctor))):
         increaseValueAtIndexXBy = distanceBetweenSerialNumbers % rolloverNumber
         indexVctor[x] += increaseValueAtIndexXBy
 
