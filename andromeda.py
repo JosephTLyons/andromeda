@@ -117,6 +117,6 @@ def printPathToTerminal(fileName):
 def printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers):
     print("Requested serial number amount: {}".format(numberOfSerials))
     print("Total possible serial numbers given current inputs: {}".format(totalPossibleSerialNumbers))
-    print("The printed licenses cover {}% of the total license pool".format((numberOfSerials / totalPossibleSerialNumbers) * 100.0))
+    print("The printed licenses cover {}% of the total license pool".format((numberOfSerials / totalPossibleSerialNumbers) * 100))
 
 main()
