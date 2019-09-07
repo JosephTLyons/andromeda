@@ -18,14 +18,14 @@ def main():
 
 def generateSerialNumbers(numberOfSerials, lengthOfSerial, useNumber,
                           useUppercase, useLowercase, useSymbols):
-    characters = createCharacterList(useNumber, useUppercase, useLowercase, useSymbols)
+    characterList = createCharacterList(useNumber, useUppercase, useLowercase, useSymbols)
     listOfCharacterLists = []
 
     for i in range(0, lengthOfSerial):
-        shuffle(characters)
-        listOfCharacterLists.append(deepcopy(characters))
+        shuffle(characterList)
+        listOfCharacterLists.append(deepcopy(characterList))
 
-    totalPossibleSerialNumbers = len(characters) ** lengthOfSerial
+    totalPossibleSerialNumbers = len(characterList) ** lengthOfSerial
 
     if (totalPossibleSerialNumbers < numberOfSerials):
         endWithErrorMessage(numberOfSerials, totalPossibleSerialNumbers)
@@ -48,21 +48,21 @@ def endWithErrorMessage(numberOfSerials, totalPossibleSerialNumbers):
     print("- Decreasing the amount of serial numbers to be generated")
 
 def createCharacterList(useNumber, useUppercase, useLowercase, useSymbols):
-    characaters = []
+    characterList = []
 
     if useNumber:
-        characaters += digits
+        characterList += digits
 
     if useUppercase:
-        characaters += ascii_uppercase
+        characterList += ascii_uppercase
 
     if useLowercase:
-        characaters += ascii_lowercase
+        characterList += ascii_lowercase
 
     if useSymbols:
-        characaters += punctuation
+        characterList += punctuation
 
-    return characaters
+    return characterList
 
 def printSerialNumbersToFile(fileName, numberOfSerials, lengthOfSerial,
                              listOfCharacterLists, totalPossibleSerialNumbers):
