@@ -40,10 +40,9 @@ def generateSerialNumbers(numberOfSerials, lengthOfSerial, useNumber,
 
         printSerialNumbersToFile(fileName, numberOfSerials, lengthOfSerial,
                                  listOfCharacterLists, totalPossibleSerialNumbers)
-
-        # println!()
-        #
-        # print_stats_to_terminal(&number_of_serials, &total_possible_combinations)
+        print()
+        printPathToTerminal(fileName)
+        printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers)
 
 def createCharacterList(useNumber, useUppercase, useLowercase, useSymbols):
     characaters = []
@@ -105,4 +104,10 @@ def increaseIndexVectorBy(indexVctor, rolloverNumber, distanceBetweenSerialNumbe
 def printPathToTerminal(fileName):
     dirPath = os.path.dirname(os.path.realpath(__file__)) + "/" + fileName
     print("File path: {}".format(dirPath))
+
+def printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers):
+    print("Requested serial number amount: {}".format(numberOfSerials))
+    print("Total possible serial numbers given current inputs: {}".format(totalPossibleSerialNumbers))
+    print("The printed licenses cover {}% of the total license pool".format((numberOfSerials / totalPossibleSerialNumbers) * 100.0))
+
 main()
