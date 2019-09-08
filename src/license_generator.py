@@ -71,7 +71,7 @@ class LicenseGenerator:
 
         for _ in range(self.numberOfSerials):
             for y in range(self.serialCharacteristics.len):
-                singleSerialNumberString += self.listOfCharacterLists[y][self.indexList.get()[y]]
+                singleSerialNumberString += self.listOfCharacterLists[y][self.indexList.at(y)]
 
             serialFile.write(singleSerialNumberString + "\n")
             singleSerialNumberString = ""

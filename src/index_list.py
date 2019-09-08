@@ -26,5 +26,5 @@ class IndexList:
 
         print();
 
-    def get(self):
-        return self.indexList
+    def at(self, index):
+        return self.indexList[index]
