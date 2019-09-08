@@ -7,7 +7,6 @@ class SerialCharacteristics:
     def __init__(self):
         self.serialLen  = int(input("Serial number length: "))
         self.characterList = self.__createCharacterList()
-
         self.numberOfCharacters = len(self.characterList)
         self.totalPossibleSerialNumbers = self.numberOfCharacters ** self.serialLen
 
