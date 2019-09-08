@@ -99,11 +99,11 @@ def printIndexList(indexList):
     print();
 
 def increaseIndexVectorBy(indexList, rolloverNumber, distanceBetweenSerialNumbers):
-    increaseValueAtIndexXBy = 0
+    increaseValueAtIndexBy = 0
 
     for i in reversed(range(len(indexList))):
-        increaseValueAtIndexXBy = distanceBetweenSerialNumbers % rolloverNumber
-        indexList[i] += increaseValueAtIndexXBy
+        increaseValueAtIndexBy = distanceBetweenSerialNumbers % rolloverNumber
+        indexList[i] += increaseValueAtIndexBy
 
         if (indexList[i] >= rolloverNumber):
             indexList[i] -= rolloverNumber
