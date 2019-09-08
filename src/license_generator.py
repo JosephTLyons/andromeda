@@ -70,8 +70,8 @@ class LicenseGenerator:
         distanceBetweenSerialNumbers = int(self.totalPossibleSerialNumbers / self.numberOfSerials)
 
         for _ in range(self.numberOfSerials):
-            for y in range(self.serialCharacteristics.len):
-                singleSerialNumberString += self.listOfCharacterLists[y][self.indexList.at(y)]
+            for i in range(self.serialCharacteristics.len):
+                singleSerialNumberString += self.listOfCharacterLists[i][self.indexList.at(i)]
 
             serialFile.write(singleSerialNumberString + "\n")
             singleSerialNumberString = ""
