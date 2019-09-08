@@ -56,7 +56,8 @@ class LicenseGenerator:
 
     def __printErrorMessage(self):
         print("Requested serial number amount: {}".format(self.numberOfSerials))
-        print("Total possible serial numbers given current inputs: {}".format(self.totalPossibleSerialNumbers))
+        print("Total possible serial numbers given current inputs: ", end = '')
+        print(self.totalPossibleSerialNumbers)
         print("Try one or more of the following:")
         print("- Increasing the length of the serial numbers")
         print("- Allowing more types of symbols to be used")
@@ -107,6 +108,10 @@ class LicenseGenerator:
         print("File path: {}".format(filePath))
 
     def __printStatsToTerminal(self):
-        print("Requested serial number amount: {}".format(self.numberOfSerials))
-        print("Total possible serial numbers given current inputs: {}".format(self.totalPossibleSerialNumbers))
-        print("The printed licenses cover {}% of the total license pool".format((self.numberOfSerials / self.totalPossibleSerialNumbers) * 100))
+        print("Requested serial number amount: ", end = '')
+        print(self.numberOfSerials)
+        print("Total possible serial numbers given current inputs: ", end = '')
+        print(self.totalPossibleSerialNumbers)
+        print("The printed licenses cover ", end = '')
+        print(((self.numberOfSerials / self.totalPossibleSerialNumbers) * 100), end = '')
+        print("% of the total license pool: ", end = '')
