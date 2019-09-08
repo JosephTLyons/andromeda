@@ -1,9 +1,4 @@
 class CharacterSetRules:
-    useNumber    = bool()
-    useUppercase = bool()
-    useLowercase = bool()
-    useSymbol    = bool()
-
     def __init__(self):
         self.useNumber    = True
         self.useUppercase = True
