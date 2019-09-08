@@ -6,11 +6,9 @@ from serial_characteristics import SerialCharacteristics
 def main():
     print()
 
-    numberOfSerials = int(input("Serial number amount: "))
-
+    requestedAmount = int(input("Serial number amount: "))
     serialCharacteristics = SerialCharacteristics()
-
-    LicenseGenerator(numberOfSerials, serialCharacteristics).generate()
+    LicenseGenerator(requestedAmount, serialCharacteristics).generate()
 
     print()
 
