@@ -10,13 +10,12 @@ def main():
 
     numberOfSerials = int(input("Serial number amount: "))
     lengthOfSerial  = int(input("Serial number length: "))
-    useNumber    = ("y" == input("Enter 'y' to use numbers: "))
-    useUppercase = ("y" == input("Enter 'y' to use uppercase letters: "))
-    useLowercase = ("y" == input("Enter 'y' to use lowercase letters: "))
-    useSymbols   = ("y" == input("Enter 'y' to use symbols: "))
+    useNum   = ("y" == input("Enter 'y' to use numbers: "))
+    useUpper = ("y" == input("Enter 'y' to use uppercase letters: "))
+    useLower = ("y" == input("Enter 'y' to use lowercase letters: "))
+    useSymb  = ("y" == input("Enter 'y' to use symbols: "))
 
-    listOfCharacterLists = createListOfCharacterLists(lengthOfSerial, useNumber, useUppercase,
-                                                      useLowercase, useSymbols)
+    listOfCharacterLists = createListOfCharacterLists(lengthOfSerial, useNum, useUpp, useLower, useSymb)
     totalPossibleSerialNumbers = len(listOfCharacterLists[0]) ** lengthOfSerial
 
     if (totalPossibleSerialNumbers < numberOfSerials):
@@ -27,8 +26,8 @@ def main():
 
     print()
 
-def createListOfCharacterLists(lengthOfSerial, useNumber, useUppercase, useLowercase, useSymbols):
-    characterList = createCharacterList(useNumber, useUppercase, useLowercase, useSymbols)
+def createListOfCharacterLists(lengthOfSerial, useNum, useUpper, useLower, useSymb):
+    characterList = createCharacterList(useNum, useUpper, useLower, useSymb)
     listOfCharacterLists = []
 
     for i in range(lengthOfSerial):
@@ -37,19 +36,19 @@ def createListOfCharacterLists(lengthOfSerial, useNumber, useUppercase, useLower
 
     return listOfCharacterLists
 
-def createCharacterList(useNumber, useUppercase, useLowercase, useSymbols):
+def createCharacterList(useNum, useUpper, useLower, useSymb):
     characterList = []
 
-    if useNumber:
+    if useNum:
         characterList += digits
 
-    if useUppercase:
+    if useUpper:
         characterList += ascii_uppercase
 
-    if useLowercase:
+    if useLower:
         characterList += ascii_lowercase
 
-    if useSymbols:
+    if useSymb:
         characterList += punctuation
 
     return characterList
@@ -71,8 +70,7 @@ def generateSerialNumbers(numberOfSerials, lengthOfSerial, listOfCharacterLists,
     print()
     printStatsToTerminal(numberOfSerials, totalPossibleSerialNumbers)
 
-def printSerialNumbersToFile(fileName, numberOfSerials, lengthOfSerial,
-                             listOfCharacterLists, totalPossibleSerialNumbers):
+def printSerialNumbersToFile(fileName, numberOfSerials, lengthOfSerial, listOfCharacterLists, totalPossibleSerialNumbers):
     serialFile = open(fileName, "w")
 
     singleSerialNumberString = ""
