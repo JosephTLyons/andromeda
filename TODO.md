@@ -12,6 +12,7 @@
 - Write unit tests?
 - Have user enter in options first and display the total number of serials
   possible before asking how many they want?
+- Reduce line length back down under 100 characters
 
 ## Python Discord suggestions
 
