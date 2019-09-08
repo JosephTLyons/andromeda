@@ -6,27 +6,24 @@ from string import punctuation
 class SerialCharacteristics:
     def __init__(self):
         self.serialLen  = int(input("Serial number length: "))
-
-        self.useNumber    = ("y" == input("Enter 'y' to use numbers: "))
-        self.useUppercase = ("y" == input("Enter 'y' to use uppercase letters: "))
-        self.useLowercase = ("y" == input("Enter 'y' to use lowercase letters: "))
-        self.useSymbol    = ("y" == input("Enter 'y' to use symbols: "))
-
-        self.characterList = []
-        self.__buildCharacterList()
+        self.characterList = self.__createCharacterList()
 
         self.numberOfCharacters = len(self.characterList)
         self.totalPossibleSerialNumbers = self.numberOfCharacters ** self.serialLen
 
-    def __buildCharacterList(self):
-        if self.useNumber:
-            self.characterList += digits
+    def __createCharacterList(self):
+        characterList = []
 
-        if self.useUppercase:
-            self.characterList += ascii_uppercase
+        if ("y" == input("Enter 'y' to use numbers: ")):
+            characterList += digits
 
-        if self.useLowercase:
-            self.characterList += ascii_lowercase
+        if ("y" == input("Enter 'y' to use uppercase letters: ")):
+            characterList += ascii_uppercase
 
-        if self.useSymbol:
-            self.characterList += punctuation
+        if ("y" == input("Enter 'y' to use lowercase letters: ")):
+            characterList += ascii_lowercase
+
+        if ("y" == input("Enter 'y' to use symbols: ")):
+            characterList += punctuation
+
+        return characterList
