@@ -5,10 +5,10 @@ class CharacterSetRules:
     useSymbol    = bool()
 
     def __init__(self):
-        useNumber    = True
-        useUppercase = True
-        useLowercase = True
-        useSymbol    = True
+        self.useNumber    = True
+        self.useUppercase = True
+        self.useLowercase = True
+        self.useSymbol    = True
 
     def setRules(self):
         self.useNumber    = ("y" == input("Enter 'y' to use numbers: "))
