@@ -16,7 +16,5 @@
 ## Python Discord suggestions
 - Follow official Python style guide and update readme
 - context manager for opening an closing files
-- enumerate might be better than for x in reversed(range(0, len(indexVctor)))
-- enumerate is used in place of range(len(list)) whenever possible
 - Two Comprehension samples (can't get these to work)
 - A less biased shuffle that will offer all permutations? `Choices`?
