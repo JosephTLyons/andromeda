@@ -9,6 +9,7 @@ class LicenseGenerator:
     lengthOfSerial = int()
     characterSetRules = CharacterSetRules()
     characterList = []
+    characterListLen = int()
     listOfCharacterLists = []
     indexList = []
     totalPossibleSerialNumbers = int()
@@ -20,11 +21,12 @@ class LicenseGenerator:
         self.characterSetRules = characterSetRules
 
         self.__createCharacterList()
+        self.characterListLen = len(self.characterList)
         self.__createListOfCharacterLists()
         self.indexList = [0] * self.lengthOfSerial
 
         self.fileName = str(self.numberOfSerials) + "_unique_serials.txt"
-        self.totalPossibleSerialNumbers = len(self.characterList) ** self.lengthOfSerial
+        self.totalPossibleSerialNumbers = self.characterListLen ** self.lengthOfSerial
 
     def generateSerialNumbers(self):
         if (self.totalPossibleSerialNumbers < self.numberOfSerials):
@@ -90,19 +92,18 @@ class LicenseGenerator:
 
     def __increaseIndexListBy(self, distanceBetweenSerialNumbers):
         increaseValueAtIndexBy = 0
-        lenthOfCharacterList = len(self.characterList)
 
         for i in reversed(range(len(self.indexList))):
-            increaseValueAtIndexBy = distanceBetweenSerialNumbers % lenthOfCharacterList
+            increaseValueAtIndexBy = distanceBetweenSerialNumbers % self.characterListLen
             self.indexList[i] += increaseValueAtIndexBy
 
-            if (self.indexList[i] >= lenthOfCharacterList):
-                self.indexList[i] -= lenthOfCharacterList
+            if (self.indexList[i] >= self.characterListLen):
+                self.indexList[i] -= self.characterListLen
 
                 if (i > 0):
                     self.indexList[i - 1] += 1
 
-            distanceBetweenSerialNumbers = int(distanceBetweenSerialNumbers / lenthOfCharacterList)
+            distanceBetweenSerialNumbers = int(distanceBetweenSerialNumbers / self.characterListLen)
 
     def __printPathToTerminal(self):
         filePath = Path.cwd().joinpath(self.fileName)
