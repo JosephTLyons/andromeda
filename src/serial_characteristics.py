@@ -2,10 +2,10 @@ from string import digits, ascii_uppercase, ascii_lowercase, punctuation
 
 class SerialCharacteristics:
     def __init__(self):
-        self.serialLen = int(input("Serial number length: "))
+        self.len = int(input("Serial number length: "))
         self.characterList = self.__createCharacterList()
         self.numberOfCharacters = len(self.characterList)
-        self.totalPossibleSerialNumbers = self.numberOfCharacters ** self.serialLen
+        self.totalPossibleSerialNumbers = self.numberOfCharacters ** self.len
 
     def __createCharacterList(self):
         characterList = []

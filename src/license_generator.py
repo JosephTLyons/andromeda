@@ -9,7 +9,7 @@ class LicenseGenerator:
         self.serialCharacteristics = serialCharacteristics
 
         self.listOfCharacterLists = self.__createListOfCharacterLists()
-        self.indexList = IndexList(self.serialCharacteristics.serialLen,
+        self.indexList = IndexList(self.serialCharacteristics.len,
                                    self.serialCharacteristics.numberOfCharacters)
 
         self.fileName = str(self.requestedAmount) + "_unique_serials.txt"
@@ -28,7 +28,7 @@ class LicenseGenerator:
     def __createListOfCharacterLists(self):
         listOfCharacterLists = []
 
-        for i in range(self.serialCharacteristics.serialLen):
+        for i in range(self.serialCharacteristics.len):
             shuffle(self.serialCharacteristics.characterList)
             listOfCharacterLists.append(self.serialCharacteristics.characterList.copy())
 
@@ -50,7 +50,7 @@ class LicenseGenerator:
         distanceBetweenSerialNumbers = int(self.serialCharacteristics.totalPossibleSerialNumbers / self.requestedAmount)
 
         for _ in range(self.requestedAmount):
-            for i in range(self.serialCharacteristics.serialLen):
+            for i in range(self.serialCharacteristics.len):
                 singleSerialNumberString += self.listOfCharacterLists[i][self.indexList.at(i)]
 
             serialFile.write(singleSerialNumberString + "\n")
