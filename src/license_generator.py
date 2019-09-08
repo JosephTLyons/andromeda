@@ -1,4 +1,3 @@
-import os
 from character_rule_set import CharacterSetRules
 from pathlib import Path
 from random import shuffle
