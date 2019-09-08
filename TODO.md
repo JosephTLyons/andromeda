@@ -16,6 +16,7 @@
   possible before asking how many they want?
 
 ## Python Discord suggestions
+
 - Follow official Python style guide and update readme
 - context manager for opening an closing files
 - Two Comprehension samples (can't get these to work)
