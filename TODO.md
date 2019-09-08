@@ -19,5 +19,4 @@
 - enumerate might be better than for x in reversed(range(0, len(indexVctor)))
 - enumerate is used in place of range(len(list)) whenever possible
 - Two Comprehension samples (can't get these to work)
-- A package to add the correct endline when concatenating "\n"
 - A less biased shuffle that will offer all permutations? `Choices`?
