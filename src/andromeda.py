@@ -9,7 +9,6 @@ def main():
     numberOfSerials = int(input("Serial number amount: "))
 
     serialCharacteristics = SerialCharacteristics()
-    serialCharacteristics.define()
 
     LicenseGenerator(numberOfSerials, serialCharacteristics).generate()
 
