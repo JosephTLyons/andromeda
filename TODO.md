@@ -15,7 +15,6 @@
 
 ## Python Discord suggestions
 - Follow official Python style guide and update readme
-- use pathlib to create path to the file to keep it OS agnostic
 - use another module for creating the file name?
 - context manager for opening an closing files
 - enumerate might be better than for x in reversed(range(0, len(indexVctor)))
