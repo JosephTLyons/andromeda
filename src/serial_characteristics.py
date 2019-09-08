@@ -5,34 +5,38 @@ from string import punctuation
 
 class SerialCharacteristics:
     def __init__(self):
-        self.len = 20
+        self.serialLen = 20
+        self.numberOfCharacters = 94
+        self.totalPossibleSerialNumbers = self.numberOfCharacters ** self.serialLen
 
         self.useNumber    = True
         self.useUppercase = True
         self.useLowercase = True
         self.useSymbol    = True
 
+        self.characterList = []
+
     def define(self):
-        self.len  = int(input("Serial number length: "))
+        self.serialLen  = int(input("Serial number length: "))
 
         self.useNumber    = ("y" == input("Enter 'y' to use numbers: "))
         self.useUppercase = ("y" == input("Enter 'y' to use uppercase letters: "))
         self.useLowercase = ("y" == input("Enter 'y' to use lowercase letters: "))
         self.useSymbol    = ("y" == input("Enter 'y' to use symbols: "))
 
-    def createCharacterList(self):
-        characterList = []
+        self.__buildCharacterList()
+        self.numberOfCharacters = len(self.characterList)
+        self.totalPossibleSerialNumbers = self.numberOfCharacters ** self.serialLen
 
+    def __buildCharacterList(self):
         if self.useNumber:
-            characterList += digits
+            self.characterList += digits
 
         if self.useUppercase:
-            characterList += ascii_uppercase
+            self.characterList += ascii_uppercase
 
         if self.useLowercase:
-            characterList += ascii_lowercase
+            self.characterList += ascii_lowercase
 
         if self.useSymbol:
-            characterList += punctuation
-
-        return characterList
+            self.characterList += punctuation

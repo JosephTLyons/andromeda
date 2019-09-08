@@ -8,16 +8,14 @@ class LicenseGenerator:
         self.numberOfSerials = numberOfSerials
         self.serialCharacteristics = serialCharacteristics
 
-        self.characterList = serialCharacteristics.createCharacterList()
-        self.characterListLen = len(self.characterList)
         self.listOfCharacterLists = self.__createListOfCharacterLists()
-        self.indexList = IndexList(self.serialCharacteristics.len, self.characterListLen)
+        self.indexList = IndexList(self.serialCharacteristics.serialLen,
+                                   self.serialCharacteristics.numberOfCharacters)
 
         self.fileName = str(self.numberOfSerials) + "_unique_serials.txt"
-        self.totalPossibleSerialNumbers = self.characterListLen ** self.serialCharacteristics.len
 
     def generate(self):
-        if (self.totalPossibleSerialNumbers < self.numberOfSerials):
+        if (self.serialCharacteristics.totalPossibleSerialNumbers < self.numberOfSerials):
             self.__printErrorMessage()
             return
 
@@ -30,16 +28,16 @@ class LicenseGenerator:
     def __createListOfCharacterLists(self):
         listOfCharacterLists = []
 
-        for i in range(self.serialCharacteristics.len):
-            shuffle(self.characterList)
-            listOfCharacterLists.append(self.characterList.copy())
+        for i in range(self.serialCharacteristics.serialLen):
+            shuffle(self.serialCharacteristics.characterList)
+            listOfCharacterLists.append(self.serialCharacteristics.characterList.copy())
 
         return listOfCharacterLists
 
     def __printErrorMessage(self):
         print("Requested serial number amount: {}".format(self.numberOfSerials))
         print("Total possible serial numbers given current inputs: ", end = '')
-        print(self.totalPossibleSerialNumbers)
+        print(self.serialCharacteristics.totalPossibleSerialNumbers)
         print("Try one or more of the following:")
         print("- Increasing the length of the serial numbers")
         print("- Allowing more types of symbols to be used")
@@ -49,10 +47,10 @@ class LicenseGenerator:
         serialFile = open(self.fileName, "w")
 
         singleSerialNumberString = ""
-        distanceBetweenSerialNumbers = int(self.totalPossibleSerialNumbers / self.numberOfSerials)
+        distanceBetweenSerialNumbers = int(self.serialCharacteristics.totalPossibleSerialNumbers / self.numberOfSerials)
 
         for _ in range(self.numberOfSerials):
-            for i in range(self.serialCharacteristics.len):
+            for i in range(self.serialCharacteristics.serialLen):
                 singleSerialNumberString += self.listOfCharacterLists[i][self.indexList.at(i)]
 
             serialFile.write(singleSerialNumberString + "\n")
@@ -71,7 +69,7 @@ class LicenseGenerator:
         print("Requested serial number amount: ", end = '')
         print(self.numberOfSerials)
         print("Total possible serial numbers given current inputs: ", end = '')
-        print(self.totalPossibleSerialNumbers)
+        print(self.serialCharacteristics.totalPossibleSerialNumbers)
         print("The printed licenses cover ", end = '')
-        print(((self.numberOfSerials / self.totalPossibleSerialNumbers) * 100), end = '')
+        print(((self.numberOfSerials / self.serialCharacteristics.totalPossibleSerialNumbers) * 100), end = '')
         print("% of the total license pool: ", end = '')
