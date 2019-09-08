@@ -3,14 +3,13 @@
 ## Must Do:
 
 - Any Python optimizations
-- Clean code / refactor more
+- Clean code / refactor more (OOP)
 - Double check all of README.md and fix discrepancies between code / README.md
   and double check all math
 - Can math notation be used in README.md?
 - Should I care if `main()` handles error on user input?
 - Write in more idiomatic Python way?
-- Bring into a class and write unit tests?
-- Use an actual "main" entry point function
+- Write unit tests?
 - Have user enter in options first and display the total number of serials
   possible before asking how many they want?
 
