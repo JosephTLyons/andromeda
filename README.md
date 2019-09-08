@@ -8,7 +8,7 @@ inspired by [random code generator](https://www.randomcodegenerator.com/en/gener
 Making a batch of unique licenses is very simple. Run the script with:
 
 ```shell
-./andromeda.py
+./main.py
 ```
 
 Let's go ahead and create `1000` serial numbers.  We want the serial numbers to
