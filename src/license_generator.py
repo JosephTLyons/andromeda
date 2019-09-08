@@ -1,4 +1,5 @@
 from character_rule_set import CharacterSetRules
+from index_list import IndexList
 from pathlib import Path
 from random import shuffle
 from string import *
@@ -12,7 +13,7 @@ class LicenseGenerator:
         self.characterList = self.__createCharacterList()
         self.characterListLen = len(self.characterList)
         self.listOfCharacterLists = self.__createListOfCharacterLists()
-        self.indexList = [0] * self.lengthOfSerial
+        self.indexList = IndexList(self.lengthOfSerial, self.characterListLen)
 
         self.fileName = str(self.numberOfSerials) + "_unique_serials.txt"
         self.totalPossibleSerialNumbers = self.characterListLen ** self.lengthOfSerial
@@ -71,37 +72,15 @@ class LicenseGenerator:
 
         for _ in range(self.numberOfSerials):
             for y in range(self.lengthOfSerial):
-                singleSerialNumberString += self.listOfCharacterLists[y][self.indexList[y]]
+                singleSerialNumberString += self.listOfCharacterLists[y][self.indexList.get()[y]]
 
             serialFile.write(singleSerialNumberString + "\n")
             singleSerialNumberString = ""
 
-            # self.__printIndexList()
-
-            self.__increaseIndexListBy(distanceBetweenSerialNumbers)
+            self.indexList.printIndexList()
+            self.indexList.increaseIndexListBy(distanceBetweenSerialNumbers)
 
         serialFile.close()
-
-    def __printIndexList(self):
-        for index in self.indexList:
-            print(str(index).rjust(3), end = '')
-
-        print();
-
-    def __increaseIndexListBy(self, distanceBetweenSerialNumbers):
-        increaseValueAtIndexBy = 0
-
-        for i in reversed(range(len(self.indexList))):
-            increaseValueAtIndexBy = distanceBetweenSerialNumbers % self.characterListLen
-            self.indexList[i] += increaseValueAtIndexBy
-
-            if (self.indexList[i] >= self.characterListLen):
-                self.indexList[i] -= self.characterListLen
-
-                if (i > 0):
-                    self.indexList[i - 1] += 1
-
-            distanceBetweenSerialNumbers = int(distanceBetweenSerialNumbers / self.characterListLen)
 
     def __printPathToTerminal(self):
         filePath = Path.cwd().joinpath(self.fileName)
