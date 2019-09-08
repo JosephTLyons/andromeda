@@ -12,8 +12,7 @@ def main():
     characterSetRules = CharacterSetRules()
     characterSetRules.setRules()
 
-    generator = LicenseGenerator(numberOfSerials, lengthOfSerial, characterSetRules)
-    generator.generateSerialNumbers()
+    LicenseGenerator(numberOfSerials, lengthOfSerial, characterSetRules).generateSerialNumbers()
 
     print()
 
