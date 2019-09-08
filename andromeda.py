@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 from random import shuffle
 from string import *
+from character_rule_set import CharacterSetRules
 
 def main():
     print()
