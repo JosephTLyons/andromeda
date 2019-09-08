@@ -4,7 +4,7 @@ class IndexList:
         self.length = length
         self.base = base
 
-    def increaseIndexListBy(self, amount):
+    def increaseBy(self, amount):
         for i in reversed(range(len(self.indexList))):
             self.indexList[i] += amount % self.base
             amount = int(amount / self.base)
@@ -18,7 +18,7 @@ class IndexList:
         if (index > 0):
             self.indexList[index - 1] += 1
 
-    def printIndexList(self):
+    def print(self):
         padding = len(str(self.base)) + 1
 
         for index in self.indexList:
