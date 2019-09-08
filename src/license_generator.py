@@ -2,14 +2,13 @@ from index_list import IndexList
 from pathlib import Path
 from random import shuffle
 from serial_characteristics import SerialCharacteristics
-from string import *
 
 class LicenseGenerator:
     def __init__(self, numberOfSerials, serialCharacteristics):
         self.numberOfSerials = numberOfSerials
         self.serialCharacteristics = serialCharacteristics
 
-        self.characterList = self.__createCharacterList()
+        self.characterList = serialCharacteristics.createCharacterList()
         self.characterListLen = len(self.characterList)
         self.listOfCharacterLists = self.__createListOfCharacterLists()
         self.indexList = IndexList(self.serialCharacteristics.len, self.characterListLen)
@@ -36,23 +35,6 @@ class LicenseGenerator:
             listOfCharacterLists.append(self.characterList.copy())
 
         return listOfCharacterLists
-
-    def __createCharacterList(self):
-        characterList = []
-
-        if self.serialCharacteristics.useNumber:
-            characterList += digits
-
-        if self.serialCharacteristics.useUppercase:
-            characterList += ascii_uppercase
-
-        if self.serialCharacteristics.useLowercase:
-            characterList += ascii_lowercase
-
-        if self.serialCharacteristics.useSymbol:
-            characterList += punctuation
-
-        return characterList
 
     def __printErrorMessage(self):
         print("Requested serial number amount: {}".format(self.numberOfSerials))
