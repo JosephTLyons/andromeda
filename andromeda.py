@@ -10,12 +10,14 @@ def main():
 
     numberOfSerials = int(input("Serial number amount: "))
     lengthOfSerial  = int(input("Serial number length: "))
-    useNum   = ("y" == input("Enter 'y' to use numbers: "))
-    useUpper = ("y" == input("Enter 'y' to use uppercase letters: "))
-    useLower = ("y" == input("Enter 'y' to use lowercase letters: "))
-    useSymb  = ("y" == input("Enter 'y' to use symbols: "))
 
-    listOfCharacterLists = createListOfCharacterLists(lengthOfSerial, useNum, useUpp, useLower, useSymb)
+    charSetRules = CharacterSetRules()
+    charSetRules.useNumber    = ("y" == input("Enter 'y' to use numbers: "))
+    charSetRules.useUppercase = ("y" == input("Enter 'y' to use uppercase letters: "))
+    charSetRules.useLowercase = ("y" == input("Enter 'y' to use lowercase letters: "))
+    charSetRules.useSymbol    = ("y" == input("Enter 'y' to use symbols: "))
+
+    listOfCharacterLists = createListOfCharacterLists(lengthOfSerial, charSetRules)
     totalPossibleSerialNumbers = len(listOfCharacterLists[0]) ** lengthOfSerial
 
     if (totalPossibleSerialNumbers < numberOfSerials):
@@ -26,8 +28,8 @@ def main():
 
     print()
 
-def createListOfCharacterLists(lengthOfSerial, useNum, useUpper, useLower, useSymb):
-    characterList = createCharacterList(useNum, useUpper, useLower, useSymb)
+def createListOfCharacterLists(lengthOfSerial, charSetRules):
+    characterList = createCharacterList(charSetRules)
     listOfCharacterLists = []
 
     for i in range(lengthOfSerial):
@@ -36,19 +38,19 @@ def createListOfCharacterLists(lengthOfSerial, useNum, useUpper, useLower, useSy
 
     return listOfCharacterLists
 
-def createCharacterList(useNum, useUpper, useLower, useSymb):
+def createCharacterList(charSetRules):
     characterList = []
 
-    if useNum:
+    if charSetRules.useNumber:
         characterList += digits
 
-    if useUpper:
+    if charSetRules.useUppercase:
         characterList += ascii_uppercase
 
-    if useLower:
+    if charSetRules.useLowercase:
         characterList += ascii_lowercase
 
-    if useSymb:
+    if charSetRules.useSymbol:
         characterList += punctuation
 
     return characterList
