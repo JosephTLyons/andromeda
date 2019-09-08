@@ -5,19 +5,18 @@ class IndexList:
         self.base = base
 
     def increaseIndexListBy(self, amount):
-        increaseValueAtIndexBy = 0
-
         for i in reversed(range(len(self.indexList))):
-            increaseValueAtIndexBy = amount % self.base
-            self.indexList[i] += increaseValueAtIndexBy
+            self.indexList[i] += amount % self.base
+            amount = int(amount / self.base)
 
             if (self.indexList[i] >= self.base):
-                self.indexList[i] -= self.base
+                self.__carryOver(i)
 
-                if (i > 0):
-                    self.indexList[i - 1] += 1
+    def __carryOver(self, index):
+        self.indexList[index] -= self.base
 
-            amount = int(amount / self.base)
+        if (index > 0):
+            self.indexList[index - 1] += 1
 
     def printIndexList(self):
         padding = len(str(self.base)) + 1
