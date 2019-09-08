@@ -5,24 +5,14 @@ from random import shuffle
 from string import *
 
 class LicenseGenerator:
-    numberOfSerials = int()
-    lengthOfSerial = int()
-    characterSetRules = CharacterSetRules()
-    characterList = []
-    characterListLen = int()
-    listOfCharacterLists = []
-    indexList = []
-    totalPossibleSerialNumbers = int()
-    fileName = str()
-
     def __init__(self, numberOfSerials, lengthOfSerial, characterSetRules):
         self.numberOfSerials = numberOfSerials
         self.lengthOfSerial = lengthOfSerial
         self.characterSetRules = characterSetRules
 
-        self.__createCharacterList()
+        self.characterList = self.__createCharacterList()
         self.characterListLen = len(self.characterList)
-        self.__createListOfCharacterLists()
+        self.listOfCharacterLists = self.__createListOfCharacterLists()
         self.indexList = [0] * self.lengthOfSerial
 
         self.fileName = str(self.numberOfSerials) + "_unique_serials.txt"
@@ -40,22 +30,30 @@ class LicenseGenerator:
         self.__printStatsToTerminal()
 
     def __createListOfCharacterLists(self):
+        listOfCharacterLists = []
+
         for i in range(self.lengthOfSerial):
             shuffle(self.characterList)
-            self.listOfCharacterLists.append(self.characterList.copy())
+            listOfCharacterLists.append(self.characterList.copy())
+
+        return listOfCharacterLists
 
     def __createCharacterList(self):
+        characterList = []
+
         if self.characterSetRules.useNumber:
-            self.characterList += digits
+            characterList += digits
 
         if self.characterSetRules.useUppercase:
-            self.characterList += ascii_uppercase
+            characterList += ascii_uppercase
 
         if self.characterSetRules.useLowercase:
-            self.characterList += ascii_lowercase
+            characterList += ascii_lowercase
 
         if self.characterSetRules.useSymbol:
-            self.characterList += punctuation
+            characterList += punctuation
+
+        return characterList
 
     def __printErrorMessage(self):
         print("Requested serial number amount: {}".format(self.numberOfSerials))
