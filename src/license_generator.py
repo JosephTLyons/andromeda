@@ -1,22 +1,21 @@
-from character_rule_set import CharacterSetRules
 from index_list import IndexList
 from pathlib import Path
 from random import shuffle
+from serial_characteristic import SerialCharacteristic
 from string import *
 
 class LicenseGenerator:
-    def __init__(self, numberOfSerials, lengthOfSerial, characterSetRules):
+    def __init__(self, numberOfSerials, serialCharacteristic):
         self.numberOfSerials = numberOfSerials
-        self.lengthOfSerial = lengthOfSerial
-        self.characterSetRules = characterSetRules
+        self.serialCharacteristic = serialCharacteristic
 
         self.characterList = self.__createCharacterList()
         self.characterListLen = len(self.characterList)
         self.listOfCharacterLists = self.__createListOfCharacterLists()
-        self.indexList = IndexList(self.lengthOfSerial, self.characterListLen)
+        self.indexList = IndexList(self.serialCharacteristic.len, self.characterListLen)
 
         self.fileName = str(self.numberOfSerials) + "_unique_serials.txt"
-        self.totalPossibleSerialNumbers = self.characterListLen ** self.lengthOfSerial
+        self.totalPossibleSerialNumbers = self.characterListLen ** self.serialCharacteristic.len
 
     def generateSerialNumbers(self):
         if (self.totalPossibleSerialNumbers < self.numberOfSerials):
@@ -32,7 +31,7 @@ class LicenseGenerator:
     def __createListOfCharacterLists(self):
         listOfCharacterLists = []
 
-        for i in range(self.lengthOfSerial):
+        for i in range(self.serialCharacteristic.len):
             shuffle(self.characterList)
             listOfCharacterLists.append(self.characterList.copy())
 
@@ -41,16 +40,16 @@ class LicenseGenerator:
     def __createCharacterList(self):
         characterList = []
 
-        if self.characterSetRules.useNumber:
+        if self.serialCharacteristic.useNumber:
             characterList += digits
 
-        if self.characterSetRules.useUppercase:
+        if self.serialCharacteristic.useUppercase:
             characterList += ascii_uppercase
 
-        if self.characterSetRules.useLowercase:
+        if self.serialCharacteristic.useLowercase:
             characterList += ascii_lowercase
 
-        if self.characterSetRules.useSymbol:
+        if self.serialCharacteristic.useSymbol:
             characterList += punctuation
 
         return characterList
@@ -71,7 +70,7 @@ class LicenseGenerator:
         distanceBetweenSerialNumbers = int(self.totalPossibleSerialNumbers / self.numberOfSerials)
 
         for _ in range(self.numberOfSerials):
-            for y in range(self.lengthOfSerial):
+            for y in range(self.serialCharacteristic.len):
                 singleSerialNumberString += self.listOfCharacterLists[y][self.indexList.get()[y]]
 
             serialFile.write(singleSerialNumberString + "\n")
