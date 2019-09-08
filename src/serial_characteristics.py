@@ -1,7 +1,4 @@
-from string import digits
-from string import ascii_uppercase
-from string import ascii_lowercase
-from string import punctuation
+from string import (digits, ascii_uppercase, ascii_lowercase, punctuation)
 
 class SerialCharacteristics:
     def __init__(self):
