@@ -1,4 +1,4 @@
-class SerialCharacteristic:
+class SerialCharacteristics:
     def __init__(self):
         self.len = 20
 

@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
 from license_generator import LicenseGenerator
-from serial_characteristic import SerialCharacteristic
+from serial_characteristics import SerialCharacteristics
 
 def main():
     print()
 
     numberOfSerials = int(input("Serial number amount: "))
 
-    serialCharacteristic = SerialCharacteristic()
-    serialCharacteristic.define()
+    serialCharacteristics = SerialCharacteristics()
+    serialCharacteristics.define()
 
-    LicenseGenerator(numberOfSerials, serialCharacteristic).generateSerialNumbers()
+    LicenseGenerator(numberOfSerials, serialCharacteristics).generateSerialNumbers()
 
     print()
 
