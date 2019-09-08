@@ -12,6 +12,8 @@
 - Write in more idiomatic Python way?
 - Bring into a class and write unit tests?
 - Use an actual "main" entry point function
+- Have user enter in options first and display the total number of serials
+  possible before asking how many they want?
 
 ## Python Discord suggestions
 - Follow official Python style guide and update readme
