@@ -11,7 +11,7 @@ def main():
     serialCharacteristics = SerialCharacteristics()
     serialCharacteristics.define()
 
-    LicenseGenerator(numberOfSerials, serialCharacteristics).generateSerialNumbers()
+    LicenseGenerator(numberOfSerials, serialCharacteristics).generate()
 
     print()
 

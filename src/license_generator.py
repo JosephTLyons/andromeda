@@ -17,7 +17,7 @@ class LicenseGenerator:
         self.fileName = str(self.numberOfSerials) + "_unique_serials.txt"
         self.totalPossibleSerialNumbers = self.characterListLen ** self.serialCharacteristics.len
 
-    def generateSerialNumbers(self):
+    def generate(self):
         if (self.totalPossibleSerialNumbers < self.numberOfSerials):
             self.__printErrorMessage()
             return
