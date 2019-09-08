@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 import os
+from character_rule_set import CharacterSetRules
 from pathlib import Path
 from random import shuffle
 from string import *
-from character_rule_set import CharacterSetRules
 
 def main():
     print()
