@@ -10,10 +10,7 @@ def main():
     lengthOfSerial  = int(input("Serial number length: "))
 
     characterSetRules = CharacterSetRules()
-    characterSetRules.useNumber    = ("y" == input("Enter 'y' to use numbers: "))
-    characterSetRules.useUppercase = ("y" == input("Enter 'y' to use uppercase letters: "))
-    characterSetRules.useLowercase = ("y" == input("Enter 'y' to use lowercase letters: "))
-    characterSetRules.useSymbol    = ("y" == input("Enter 'y' to use symbols: "))
+    characterSetRules.setRules()
 
     generator = LicenseGenerator(numberOfSerials, lengthOfSerial, characterSetRules)
     generator.generateSerialNumbers()
