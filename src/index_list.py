@@ -19,8 +19,10 @@ class IndexList:
             self.indexList[index - 1] += 1
 
     def print(self):
+        padding = 1 if (self.base <= 10) else 2
+
         for index in self.indexList:
-            print(str(index).rjust(2, '0'), end = ' ')
+            print(str(index).rjust(padding, '0'), end = ' ')
 
         print();
 
