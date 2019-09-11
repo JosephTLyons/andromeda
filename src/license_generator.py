@@ -69,6 +69,11 @@ class LicenseGenerator:
         print("Requested serial number amount: ", end = '')
         print(self.requestedAmount)
         print("Total possible serial numbers given current inputs: ", end = '')
+
+        print(self.serialCharacteristics.numberOfCharacters, end = '')
+        print("^", end = '')
+        print(self.serialCharacteristics.len, end = '')
+        print(" = ", end = '')
         print(self.serialCharacteristics.totalPossibleSerialNumbers)
         print("The printed licenses cover ", end = '')
         print(((self.requestedAmount / self.serialCharacteristics.totalPossibleSerialNumbers) * 100), end = '')
