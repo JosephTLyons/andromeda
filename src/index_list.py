@@ -19,10 +19,8 @@ class IndexList:
             self.indexList[index - 1] += 1
 
     def print(self):
-        padding = len(str(self.base)) + 1
-
         for index in self.indexList:
-            print(str(index).rjust(padding), end = '')
+            print(str(index).rjust(2, '0'), end = ' ')
 
         print();
 
