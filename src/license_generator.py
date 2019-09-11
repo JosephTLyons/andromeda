@@ -47,7 +47,7 @@ class LicenseGenerator:
         serialFile = open(self.fileName, "w")
 
         singleSerialNumberString = ""
-        distanceBetweenSerialNumbers = int(self.serialCharacteristics.totalPossibleSerialNumbers / self.requestedAmount)
+        distanceBetweenSerialNumbers = self.serialCharacteristics.totalPossibleSerialNumbers // self.requestedAmount
 
         for _ in range(self.requestedAmount):
             for i in range(self.serialCharacteristics.len):

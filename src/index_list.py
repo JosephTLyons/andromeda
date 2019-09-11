@@ -7,7 +7,7 @@ class IndexList:
     def increaseBy(self, amount):
         for i in reversed(range(len(self.indexList))):
             self.indexList[i] += amount % self.base
-            amount = int(amount / self.base)
+            amount = amount // self.base
 
             if (self.indexList[i] >= self.base):
                 self.__carryOver(i)
