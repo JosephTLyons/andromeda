@@ -24,7 +24,7 @@ class IndexList:
         for index in self.indexList:
             print(str(index).rjust(padding, '0'), end = ' ')
 
-        print();
+        print()
 
     def at(self, index):
         return self.indexList[index]
