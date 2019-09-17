@@ -1,6 +1,7 @@
 import pytest
 from index_list import IndexList
 
+
 class TestIndexList():
     def test_base_rollovers(self):
         length = 5
