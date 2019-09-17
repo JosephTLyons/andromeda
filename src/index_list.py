@@ -28,3 +28,6 @@ class IndexList:
 
     def at(self, index):
         return self.indexList[index]
+
+    def len(self):
+        return len(self.indexList)
