@@ -1,6 +1,7 @@
-from index_list import IndexList
 from pathlib import Path
 from random import shuffle
+
+from index_list import IndexList
 from serial_characteristics import SerialCharacteristics
 
 

@@ -1,4 +1,4 @@
-from string import digits, ascii_uppercase, ascii_lowercase, punctuation
+from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 
 class SerialCharacteristics:

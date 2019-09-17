@@ -1,4 +1,5 @@
 import pytest
+
 from index_list import IndexList
 
 
