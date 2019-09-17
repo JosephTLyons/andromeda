@@ -1,5 +1,5 @@
 import pytest
-from src/index_list import IndexList
+from index_list import IndexList
 
 class TestIndexList():
     def test_base_rollovers(self):
