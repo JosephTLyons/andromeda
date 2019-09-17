@@ -1,2 +1,4 @@
 *_unique_serials.txt
+.idea
+.pytest_cache
 __pycache__
