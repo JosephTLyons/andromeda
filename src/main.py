@@ -3,6 +3,7 @@
 from license_generator import LicenseGenerator
 from serial_characteristics import SerialCharacteristics
 
+
 def main():
     print()
 
@@ -11,6 +12,7 @@ def main():
     LicenseGenerator(requestedAmount, serialCharacteristics).generate()
 
     print()
+
 
 if __name__ == "__main__":
     main()

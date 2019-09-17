@@ -1,5 +1,6 @@
 from string import digits, ascii_uppercase, ascii_lowercase, punctuation
 
+
 class SerialCharacteristics:
     def __init__(self):
         self.len = int(input("Serial number length: "))

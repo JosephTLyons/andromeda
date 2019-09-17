@@ -3,6 +3,7 @@ from pathlib import Path
 from random import shuffle
 from serial_characteristics import SerialCharacteristics
 
+
 class LicenseGenerator:
     def __init__(self, requestedAmount, serialCharacteristics):
         self.requestedAmount = requestedAmount
@@ -30,13 +31,14 @@ class LicenseGenerator:
 
         for i in range(self.serialCharacteristics.len):
             shuffle(self.serialCharacteristics.characterList)
-            listOfCharacterLists.append(self.serialCharacteristics.characterList.copy())
+            listOfCharacterLists.append(
+                self.serialCharacteristics.characterList.copy())
 
         return listOfCharacterLists
 
     def __printErrorMessage(self):
         print("Requested serial number amount: {}".format(self.requestedAmount))
-        print("Total possible serial numbers given current inputs: ", end = '')
+        print("Total possible serial numbers given current inputs: ", end='')
         print(self.serialCharacteristics.totalPossibleSerialNumbers)
         print("Try one or more of the following:")
         print("- Increasing the length of the serial numbers")
@@ -51,7 +53,8 @@ class LicenseGenerator:
 
         for _ in range(self.requestedAmount):
             for i in range(self.serialCharacteristics.len):
-                singleSerialNumberString += self.listOfCharacterLists[i][self.indexList.at(i)]
+                singleSerialNumberString += self.listOfCharacterLists[i][self.indexList.at(
+                    i)]
 
             serialFile.write(singleSerialNumberString + "\n")
             singleSerialNumberString = ""
@@ -74,18 +77,19 @@ class LicenseGenerator:
         print("Requested serial number amount: " + str(self.requestedAmount))
 
     def __printTotalPossibleSerialNumbers(self):
-        print("Total possible serial numbers given current inputs: ", end = '')
-        print(self.serialCharacteristics.numberOfCharacters, end = '')
-        print("^", end = '')
-        print(self.serialCharacteristics.len, end = '')
-        print(" = ", end = '')
+        print("Total possible serial numbers given current inputs: ", end='')
+        print(self.serialCharacteristics.numberOfCharacters, end='')
+        print("^", end='')
+        print(self.serialCharacteristics.len, end='')
+        print(" = ", end='')
         print(self.serialCharacteristics.totalPossibleSerialNumbers)
 
     def __printPercentOfLicensePoolCovered(self):
-        print("License pool coverage: (", end = '')
-        print(str(self.requestedAmount) + " / ", end = '')
-        print("(" + str(self.serialCharacteristics.numberOfCharacters), end = '')
-        print("^", end = '')
-        print(str(self.serialCharacteristics.len) + ")) * 100 = ", end = '')
-        print(((self.requestedAmount / self.serialCharacteristics.totalPossibleSerialNumbers) * 100), end = '')
+        print("License pool coverage: (", end='')
+        print(str(self.requestedAmount) + " / ", end='')
+        print("(" + str(self.serialCharacteristics.numberOfCharacters), end='')
+        print("^", end='')
+        print(str(self.serialCharacteristics.len) + ")) * 100 = ", end='')
+        print(((self.requestedAmount /
+                self.serialCharacteristics.totalPossibleSerialNumbers) * 100), end='')
         print("%")
