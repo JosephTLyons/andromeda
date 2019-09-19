@@ -1,7 +1,6 @@
 class IndexList:
     def __init__(self, length, base):
         self.indexList = [0] * length
-        self.length = length
         self.base = base
 
     def increaseBy(self, amount):
