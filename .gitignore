@@ -1,4 +1,5 @@
-*_unique_serials.txt
+__pycache__
 .idea
 .pytest_cache
-__pycache__
+.vscode/*
+*_unique_serials.txt
