@@ -20,3 +20,7 @@ class TestIndexList():
                 new_list.append(index_list.at(i))
 
             assert [1, 1, 1, 1, 1] == new_list
+
+    def test_length(self):
+        index_list = IndexList(5, 10)
+        assert 5 == index_list.len()
