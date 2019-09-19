@@ -10,6 +10,11 @@ class IndexList:
 
         for i in reversed(range(len(self.indexList))):
             self.indexList[i] += amount % self.base
+
+            if i == 0:
+                if amount + self.indexList[i] >= self.base:
+                    self.hasResetToZero = True
+
             amount = amount // self.base
 
             if (self.indexList[i] >= self.base):
@@ -28,8 +33,6 @@ class IndexList:
             self.__resetToZero()
 
     def __resetToZero(self):
-        self.hasResetToZero = True
-
         for (i, _) in enumerate(self.indexList):
             self.indexList[i] = 0
 
