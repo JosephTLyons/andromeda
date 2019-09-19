@@ -57,6 +57,10 @@ class LicenseGenerator:
                 singleSerialNumberString += self.listOfCharacterLists[i][self.indexList.at(
                     i)]
 
+            # This should never occur, however, it is better safe than sorry
+            if self.indexList.hasResetToZero:
+                raise ValueError("Index List has reset to zero.")
+
             serialFile.write(singleSerialNumberString + "\n")
             singleSerialNumberString = ""
 
