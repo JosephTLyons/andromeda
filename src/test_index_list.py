@@ -20,7 +20,7 @@ class TestIndexList():
 
         assert [1, 1] == new_list
 
-    def test_base_rollover_reset_to_zero(self):
+    def test_base_rollover_with_even_overflow(self):
         length = 2
         base = 2
 
@@ -39,7 +39,7 @@ class TestIndexList():
         assert [0, 0] == new_list
         assert index_list.hasOverflown == True
 
-    def test_base_rollover_reset_to_zero_with_remainder(self):
+    def test_base_rollover_with_overflow_plus_remainder(self):
         length = 2
         base = 2
 
