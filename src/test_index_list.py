@@ -26,7 +26,7 @@ class TestIndexList():
 
         index_list = IndexList(length, base)
 
-        assert index_list.hasResetToZero == False
+        assert index_list.hasOverflown == False
 
         for i in range(base ** length):
             index_list.increaseBy(1)
@@ -37,7 +37,7 @@ class TestIndexList():
             new_list.append(index_list.at(i))
 
         assert [0, 0] == new_list
-        assert index_list.hasResetToZero == True
+        assert index_list.hasOverflown == True
 
     def test_base_rollover_reset_to_zero_with_remainder(self):
         length = 2
@@ -45,7 +45,7 @@ class TestIndexList():
 
         index_list = IndexList(length, base)
 
-        assert index_list.hasResetToZero == False
+        assert index_list.hasOverflown == False
 
         index_list.increaseBy(5)
 
@@ -55,7 +55,7 @@ class TestIndexList():
             new_list.append(index_list.at(i))
 
         assert [0, 1] == new_list
-        assert index_list.hasResetToZero == True
+        assert index_list.hasOverflown == True
 
     def test_with_various_bases(self):
         length = 5
