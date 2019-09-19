@@ -88,6 +88,16 @@ class TestIndexList():
 
         assert [0, 2, 0] == new_list
 
+    def test_init(self):
+        index_list = IndexList(5, 10)
+
+        new_list = []
+
+        for i in range(index_list.len()):
+            new_list.append(index_list.at(i))
+
+        assert [0, 0, 0, 0, 0] == new_list
+
     def test_length(self):
         index_list = IndexList(5, 10)
         assert 5 == index_list.len()
