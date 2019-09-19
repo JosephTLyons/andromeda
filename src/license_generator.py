@@ -57,7 +57,9 @@ class LicenseGenerator:
                 singleSerialNumberString += self.listOfCharacterLists[i][self.indexList.at(
                     i)]
 
-            # This should never occur, however, it is better safe than sorry
+            # This should never occur, based on the algorithm, however, it is better safe than
+            # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
+            # licenses could potentially be creted.
             if self.indexList.hasOverflown:
                 raise ValueError("Index List has overflown.")
 
