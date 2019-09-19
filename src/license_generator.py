@@ -58,8 +58,8 @@ class LicenseGenerator:
                     i)]
 
             # This should never occur, however, it is better safe than sorry
-            if self.indexList.hasResetToZero:
-                raise ValueError("Index List has reset to zero.")
+            if self.indexList.hasOverflown:
+                raise ValueError("Index List has overflown.")
 
             serialFile.write(singleSerialNumberString + "\n")
             singleSerialNumberString = ""
