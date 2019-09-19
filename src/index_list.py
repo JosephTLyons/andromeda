@@ -29,13 +29,6 @@ class IndexList:
         if (index > 0):
             self.indexList[index - 1] += 1
 
-        else:
-            self.__resetToZero()
-
-    def __resetToZero(self):
-        for (i, _) in enumerate(self.indexList):
-            self.indexList[i] = 0
-
     def print(self):
         padding = 1 if (self.base <= 10) else 2
 
