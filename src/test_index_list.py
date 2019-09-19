@@ -70,14 +70,11 @@ class TestIndexList():
         assert index_list.hasOverflown == False
 
     def test_length(self):
-        index_list = IndexList(5, 10)
-        assert 5 == index_list.len()
+        assert 5 == IndexList(5, 10).len()
 
     def test_increment_by_neg_error(self):
-        index_list = IndexList(5, 2)
-
         with pytest.raises(ValueError):
-            index_list.increaseBy(-1)
+            IndexList(5, 2).increaseBy(-1)
 
     def __make_list(self, index_list):
         new_list = []
