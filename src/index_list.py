@@ -11,8 +11,7 @@ class IndexList:
         for i in reversed(range(len(self.indexList))):
             self.indexList[i] += amount % self.base
 
-            if i == 0:
-                if amount + self.indexList[i] >= self.base:
+            if (i == 0) and (amount + self.indexList[i] >= self.base):
                 self.hasOverflown = True
 
             amount = amount // self.base
