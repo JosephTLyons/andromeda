@@ -66,7 +66,7 @@ class LicenseGenerator:
             serialFile.write(singleSerialNumberString + "\n")
             singleSerialNumberString = ""
 
-            # self.indexList.print()
+            print(self.indexList.getIndexString)
             self.indexList.increaseBy(distanceBetweenSerialNumbers)
 
         serialFile.close()
