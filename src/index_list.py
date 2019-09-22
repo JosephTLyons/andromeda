@@ -4,7 +4,7 @@ class IndexList:
         self.base = base
         self.hasOverflown = False
 
-    def increaseBy(self, amount):
+    def increase_by(self, amount):
         if amount <= 0:
             raise ValueError("Must increment by a positive value")
 
@@ -17,26 +17,26 @@ class IndexList:
             amount = amount // self.base
 
             if (self.indexList[i] >= self.base):
-                self.__carryOver(i)
+                self.__carry_over(i)
 
             elif amount <= 0:
                 return
 
-    def __carryOver(self, index):
+    def __carry_over(self, index):
         self.indexList[index] -= self.base
 
         if (index > 0):
             self.indexList[index - 1] += 1
 
-    def getIndexString(self):
+    def get_index_string(self):
         padding = 1 if (self.base <= 10) else 2
 
-        indexString = ""
+        index_string = ""
 
         for index in self.indexList:
-            indexString += (str(index).rjust(padding, '0') + " ")
+            index_string += (str(index).rjust(padding, '0') + " ")
 
-        return indexString
+        return index_string
 
     def at(self, index):
         return self.indexList[index]

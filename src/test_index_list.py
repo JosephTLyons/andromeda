@@ -11,7 +11,7 @@ class TestIndexList():
         index_list = IndexList(length, base)
 
         for i in range((base ** length) - 1):
-            index_list.increaseBy(1)
+            index_list.increase_by(1)
 
         assert [1, 1] == self.__make_list(index_list)
 
@@ -24,7 +24,7 @@ class TestIndexList():
         assert index_list.hasOverflown == False
 
         for i in range(base ** length):
-            index_list.increaseBy(1)
+            index_list.increase_by(1)
 
         assert [0, 0] == self.__make_list(index_list)
         assert index_list.hasOverflown == True
@@ -37,7 +37,7 @@ class TestIndexList():
 
         assert index_list.hasOverflown == False
 
-        index_list.increaseBy(5)
+        index_list.increase_by(5)
 
         assert [0, 1] == self.__make_list(index_list)
         assert index_list.hasOverflown == True
@@ -50,7 +50,7 @@ class TestIndexList():
             index_list = IndexList(length, base)
 
             for i in range(length):
-                index_list.increaseBy(base ** i)
+                index_list.increase_by(base ** i)
 
             assert [1, 1, 1, 1, 1] == self.__make_list(index_list)
 
@@ -59,7 +59,7 @@ class TestIndexList():
         base = 10
 
         index_list = IndexList(length, base)
-        index_list.increaseBy(20)
+        index_list.increase_by(20)
 
         assert [0, 2, 0] == self.__make_list(index_list)
 
@@ -74,13 +74,13 @@ class TestIndexList():
 
     def test_increment_by_neg_error(self):
         with pytest.raises(ValueError):
-            IndexList(5, 2).increaseBy(-1)
+            IndexList(5, 2).increase_by(-1)
 
     def test_get_index_string(self):
         index_list = IndexList(5, 10)
-        assert "0 0 0 0 0 " == index_list.getIndexString()
-        index_list.increaseBy(10 * 4)
-        assert "0 0 0 4 0 " == index_list.getIndexString()
+        assert "0 0 0 0 0 " == index_list.get_index_string()
+        index_list.increase_by(10 * 4)
+        assert "0 0 0 4 0 " == index_list.get_index_string()
 
     def __make_list(self, index_list):
         new_list = []
