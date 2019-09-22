@@ -76,14 +76,14 @@ class LicenseGenerator:
         print("File path: {}".format(file_path))
 
     def __print_stats_to_terminal(self):
-        self.__printRequestedAmount()
-        self.__printTotalPossibleSerialNumbers()
-        self.__printPercentOfLicensePoolCovered()
+        self.__print_requested_amount()
+        self.__print_total_possible_serial_numbers()
+        self.__print_percent_of_license_pool_covered()
 
-    def __printRequestedAmount(self):
+    def __print_requested_amount(self):
         print("Requested serial number amount: " + str(self.requested_amount))
 
-    def __printTotalPossibleSerialNumbers(self):
+    def __print_total_possible_serial_numbers(self):
         print("Total possible serial numbers given current inputs: ", end='')
         print(self.serial_characteristics.number_of_characters, end='')
         print("^", end='')
@@ -91,7 +91,7 @@ class LicenseGenerator:
         print(" = ", end='')
         print(self.serial_characteristics.total_possible_serial_numbers)
 
-    def __printPercentOfLicensePoolCovered(self):
+    def __print_percent_of_license_pool_covered(self):
         print("License pool coverage: (", end='')
         print(str(self.requested_amount) + " / ", end='')
         print("(" + str(self.serial_characteristics.number_of_characters), end='')
