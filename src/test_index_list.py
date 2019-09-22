@@ -79,8 +79,8 @@ class TestIndexList():
     def test_get_index_string(self):
         index_list = IndexList(5, 10)
         assert "0 0 0 0 0 " == index_list.get_index_string()
-        index_list.increase_by(10 * 4)
-        assert "0 0 0 4 0 " == index_list.get_index_string()
+        index_list.increase_by(15214)
+        assert "1 5 2 1 4 " == index_list.get_index_string()
 
     def __make_list(self, index_list):
         new_list = []
