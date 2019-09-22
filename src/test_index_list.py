@@ -76,6 +76,12 @@ class TestIndexList():
         with pytest.raises(ValueError):
             IndexList(5, 2).increaseBy(-1)
 
+    def test_get_index_string(self):
+        index_list = IndexList(5, 10)
+        assert "0 0 0 0 0 " == index_list.getIndexString()
+        index_list.increaseBy(10 * 4)
+        assert "0 0 0 4 0 " == index_list.getIndexString()
+
     def __make_list(self, index_list):
         new_list = []
 
