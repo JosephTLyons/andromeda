@@ -21,13 +21,13 @@ class TestIndexList():
 
         index_list = IndexList(length, base)
 
-        assert index_list.hasOverflown == False
+        assert index_list.has_over_flown == False
 
         for i in range(base ** length):
             index_list.increase_by(1)
 
         assert [0, 0] == self.__make_list(index_list)
-        assert index_list.hasOverflown == True
+        assert index_list.has_over_flown == True
 
     def test_base_rollover_with_overflow_plus_remainder(self):
         length = 2
@@ -35,12 +35,12 @@ class TestIndexList():
 
         index_list = IndexList(length, base)
 
-        assert index_list.hasOverflown == False
+        assert index_list.has_over_flown == False
 
         index_list.increase_by(5)
 
         assert [0, 1] == self.__make_list(index_list)
-        assert index_list.hasOverflown == True
+        assert index_list.has_over_flown == True
 
     def test_with_various_bases(self):
         length = 5
@@ -67,7 +67,7 @@ class TestIndexList():
         index_list = IndexList(5, 10)
         assert [0, 0, 0, 0, 0] == self.__make_list(index_list)
         assert 5 == index_list.len()
-        assert index_list.hasOverflown == False
+        assert index_list.has_over_flown == False
 
     def test_length(self):
         assert 5 == IndexList(5, 10).len()

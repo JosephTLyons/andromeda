@@ -6,97 +6,97 @@ from serial_characteristics import SerialCharacteristics
 
 
 class LicenseGenerator:
-    def __init__(self, requestedAmount, serialCharacteristics):
-        self.requestedAmount = requestedAmount
-        self.serialCharacteristics = serialCharacteristics
+    def __init__(self, requested_amount, serial_characteristics):
+        self.requested_amount = requested_amount
+        self.serial_characteristics = serial_characteristics
 
-        self.listOfCharacterLists = self.__createListOfCharacterLists()
-        self.indexList = IndexList(self.serialCharacteristics.len,
-                                   self.serialCharacteristics.numberOfCharacters)
+        self.list_of_character_lists = self.__create_list_of_character_lists()
+        self.index_list = IndexList(self.serial_characteristics.len,
+                                    self.serial_characteristics.number_of_characters)
 
-        self.fileName = str(self.requestedAmount) + "_unique_serials.txt"
+        self.file_name = str(self.requested_amount) + "_unique_serials.txt"
 
     def generate(self):
-        if (self.serialCharacteristics.totalPossibleSerialNumbers < self.requestedAmount):
-            self.__printErrorMessage()
+        if (self.serial_characteristics.total_possible_serial_numbers < self.requested_amount):
+            self.__print_error_message()
             return
 
-        self.__printSerialNumbersToFile()
+        self.__print_serial_numbers_to_file()
         print()
-        self.__printPathToTerminal()
+        self.__print_path_to_terminal()
         print()
-        self.__printStatsToTerminal()
+        self.__print_stats_to_terminal()
 
-    def __createListOfCharacterLists(self):
-        listOfCharacterLists = []
+    def __create_list_of_character_lists(self):
+        list_of_character_lists = []
 
-        for i in range(self.serialCharacteristics.len):
-            shuffle(self.serialCharacteristics.characterList)
-            listOfCharacterLists.append(
-                self.serialCharacteristics.characterList.copy())
+        for i in range(self.serial_characteristics.len):
+            shuffle(self.serial_characteristics.character_list)
+            list_of_character_lists.append(
+                self.serial_characteristics.character_list.copy())
 
-        return listOfCharacterLists
+        return list_of_character_lists
 
-    def __printErrorMessage(self):
-        print("Requested serial number amount: {}".format(self.requestedAmount))
+    def __print_error_message(self):
+        print("Requested serial number amount: {}".format(self.requested_amount))
         print("Total possible serial numbers given current inputs: ", end='')
-        print(self.serialCharacteristics.totalPossibleSerialNumbers)
+        print(self.serial_characteristics.total_possible_serial_numbers)
         print("Try one or more of the following:")
         print("- Increasing the length of the serial numbers")
         print("- Allowing more types of symbols to be used")
         print("- Decreasing the amount of serial numbers to be generated")
 
-    def __printSerialNumbersToFile(self):
-        serialFile = open(self.fileName, "w")
+    def __print_serial_numbers_to_file(self):
+        serial_file = open(self.file_name, "w")
 
-        singleSerialNumberString = ""
-        distanceBetweenSerialNumbers = self.serialCharacteristics.totalPossibleSerialNumbers // self.requestedAmount
+        single_serial_number_string = ""
+        distance_between_serial_numbers = self.serial_characteristics.total_possible_serial_numbers // self.requested_amount
 
-        for _ in range(self.requestedAmount):
-            for i in range(self.serialCharacteristics.len):
-                singleSerialNumberString += self.listOfCharacterLists[i][self.indexList.at(
+        for _ in range(self.requested_amount):
+            for i in range(self.serial_characteristics.len):
+                single_serial_number_string += self.list_of_character_lists[i][self.index_list.at(
                     i)]
 
             # This should never occur, based on the algorithm, however, it is better safe than
             # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
             # licenses could potentially be creted.
-            if self.indexList.hasOverflown:
+            if self.index_list.has_over_flown:
                 raise ValueError("Index List has overflown.")
 
-            serialFile.write(singleSerialNumberString + "\n")
-            singleSerialNumberString = ""
+            serial_file.write(single_serial_number_string + "\n")
+            single_serial_number_string = ""
 
-            print(self.indexList.get_index_string())
-            self.indexList.increase_by(distanceBetweenSerialNumbers)
+            print(self.index_list.get_index_string())
+            self.index_list.increase_by(distance_between_serial_numbers)
 
-        serialFile.close()
+        serial_file.close()
 
-    def __printPathToTerminal(self):
-        filePath = Path.cwd().joinpath(self.fileName)
-        print("File path: {}".format(filePath))
+    def __print_path_to_terminal(self):
+        file_path = Path.cwd().joinpath(self.file_name)
+        print("File path: {}".format(file_path))
 
-    def __printStatsToTerminal(self):
+    def __print_stats_to_terminal(self):
         self.__printRequestedAmount()
         self.__printTotalPossibleSerialNumbers()
         self.__printPercentOfLicensePoolCovered()
 
     def __printRequestedAmount(self):
-        print("Requested serial number amount: " + str(self.requestedAmount))
+        print("Requested serial number amount: " + str(self.requested_amount))
 
     def __printTotalPossibleSerialNumbers(self):
         print("Total possible serial numbers given current inputs: ", end='')
-        print(self.serialCharacteristics.numberOfCharacters, end='')
+        print(self.serial_characteristics.number_of_characters, end='')
         print("^", end='')
-        print(self.serialCharacteristics.len, end='')
+        print(self.serial_characteristics.len, end='')
         print(" = ", end='')
-        print(self.serialCharacteristics.totalPossibleSerialNumbers)
+        print(self.serial_characteristics.total_possible_serial_numbers)
 
     def __printPercentOfLicensePoolCovered(self):
         print("License pool coverage: (", end='')
-        print(str(self.requestedAmount) + " / ", end='')
-        print("(" + str(self.serialCharacteristics.numberOfCharacters), end='')
+        print(str(self.requested_amount) + " / ", end='')
+        print("(" + str(self.serial_characteristics.number_of_characters), end='')
         print("^", end='')
-        print(str(self.serialCharacteristics.len) + ")) * 100 = ", end='')
-        print(((self.requestedAmount /
-                self.serialCharacteristics.totalPossibleSerialNumbers) * 100), end='')
+        print(str(self.serial_characteristics.len) + ")) * 100 = ", end='')
+        print(((self.requested_amount /
+                self.serial_characteristics.total_possible_serial_numbers) * 100), end='')
         print("%")
