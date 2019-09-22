@@ -28,13 +28,15 @@ class IndexList:
         if (index > 0):
             self.indexList[index - 1] += 1
 
-    def print(self):
+    def getIndexString(self):
         padding = 1 if (self.base <= 10) else 2
 
-        for index in self.indexList:
-            print(str(index).rjust(padding, '0'), end=' ')
+        indexString = ""
 
-        print()
+        for index in self.indexList:
+            indexString += (str(index).rjust(padding, '0') + " ")
+
+        return indexString
 
     def at(self, index):
         return self.indexList[index]
