@@ -66,7 +66,7 @@ class LicenseGenerator:
             serial_file.write(single_serial_number_string + "\n")
             single_serial_number_string = ""
 
-            print(self.index_list.get_index_string())
+            # print(self.index_list.get_index_string())
             self.index_list.increase_by(distance_between_serial_numbers)
 
         serial_file.close()
