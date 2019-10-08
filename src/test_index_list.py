@@ -82,6 +82,11 @@ class TestIndexList():
         index_list.increase_by(15214)
         assert "1 5 2 1 4 " == index_list.get_index_string()
 
+    def test_large_increment(self):
+        index_list = IndexList(5, 12)
+        index_list.increase_by(92392)
+        assert [4, 5, 5, 7, 4] == self.__make_list(index_list)
+
     def __make_list(self, index_list):
         new_list = []
 
