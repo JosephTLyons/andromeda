@@ -2,7 +2,7 @@ class IndexList:
     def __init__(self, length, base):
         self.indexList = [0] * length
         self.base = base
-        self.has_over_flown = False
+        self.has_overflowed = False
 
     def increase_by(self, amount):
         if amount <= 0:
@@ -12,7 +12,7 @@ class IndexList:
             self.indexList[i] += amount % self.base
 
             if (i == 0) and (amount + self.indexList[i] >= self.base):
-                self.has_over_flown = True
+                self.has_overflowed = True
 
             amount = amount // self.base
 

@@ -61,8 +61,8 @@ class LicenseGenerator:
             # This should never occur, based on the algorithm, however, it is better safe than
             # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
             # licenses could potentially be creted.
-            if self.index_list.has_over_flown:
-                raise ValueError("Index List has overflown.")
+            if self.index_list.has_overflowed:
+                raise ValueError("Index List has overflowed.")
 
             serial_file.write(single_serial_number_string + self.file_options_dict["license_separator_character"])
             single_serial_number_string = ""
