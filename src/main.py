@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-from file_options import FileOptions
 from license_generator import LicenseGenerator
-from serial_characteristics import SerialCharacteristics
+from options_dictionaries import get_file_options_dict, get_serial_characteristics_dict
 
 
 def main():
@@ -10,8 +9,8 @@ def main():
 
     LicenseGenerator(
         int(input("Serial number amount: ")),
-        SerialCharacteristics(),
-        FileOptions(),
+        get_serial_characteristics_dict(),
+        get_file_options_dict(),
     ).generate()
 
     print()
