@@ -2,10 +2,16 @@ from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 
 def get_file_options_dict():
-    license_separator_character = input("License separator character (keep blank for newline): ")
+    license_separator_character = ""
 
-    if license_separator_character == "" or len(license_separator_character) > 1:
-        license_separator_character = "\n"
+    while(len(license_separator_character) != 1):
+        license_separator_character = input("License separator character (keep blank for newline): ")
+
+        if len(license_separator_character) > 1:
+            print("Only a single character can be used for a license separator character")
+
+        if license_separator_character == "":
+            license_separator_character = "\n"
 
     file_extension = input("File extension (keep blank for txt): ")
 
