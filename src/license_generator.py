@@ -49,31 +49,28 @@ class LicenseGenerator:
         print("- Decreasing the amount of serial numbers to be generated")
 
     def __print_serial_numbers_to_file(self):
-        serial_file = open(self.file_name, "w")
-
-        single_serial_number_string = ""
-        distance_between_serial_numbers = self.serial_characteristics_dict["total_possible_serial_numbers"] // self.requested_amount
-
-        for i in range(self.requested_amount):
-            for j in range(self.serial_characteristics_dict["length"]):
-                single_serial_number_string += self.list_of_character_lists[j][self.index_list.at(j)]
-
-            # This should never occur, based on the algorithm, however, it is better safe than
-            # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
-            # licenses could potentially be creted.
-            if self.index_list.has_overflowed:
-                raise ValueError("Index List has overflowed.")
-
-            if i < self.requested_amount - 1:
-                single_serial_number_string += self.file_options_dict["license_separator_character"]
-
-            serial_file.write(single_serial_number_string)
+        with open(self.file_name, "w") as serial_file:
             single_serial_number_string = ""
+            distance_between_serial_numbers = self.serial_characteristics_dict["total_possible_serial_numbers"] // self.requested_amount
 
-            # print(self.index_list.get_index_string())
-            self.index_list.increase_by(distance_between_serial_numbers)
+            for i in range(self.requested_amount):
+                for j in range(self.serial_characteristics_dict["length"]):
+                    single_serial_number_string += self.list_of_character_lists[j][self.index_list.at(j)]
 
-        serial_file.close()
+                # This should never occur, based on the algorithm, however, it is better safe than
+                # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
+                # licenses could potentially be creted.
+                if self.index_list.has_overflowed:
+                    raise ValueError("Index List has overflowed.")
+
+                if i < self.requested_amount - 1:
+                    single_serial_number_string += self.file_options_dict["license_separator_character"]
+
+                serial_file.write(single_serial_number_string)
+                single_serial_number_string = ""
+
+                # print(self.index_list.get_index_string())
+                self.index_list.increase_by(distance_between_serial_numbers)
 
     def __print_path_to_terminal(self):
         file_path = Path.cwd().joinpath(self.file_name)
