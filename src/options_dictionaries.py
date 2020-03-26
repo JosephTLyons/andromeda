@@ -19,12 +19,12 @@ def get_file_options_dict():
 
     return file_options_dict
 
-def get_serial_characteristics_dict(license_character_to_omit):
+def get_serial_characteristics_dict(license_separation_character):
     length = int(input("Serial number length: "))
     character_list = __create_character_list()
 
-    if license_character_to_omit != "\n" and license_character_to_omit in character_list:
-        character_list.remove(license_character_to_omit)
+    if license_separation_character != "\n" and license_separation_character in character_list:
+        character_list.remove(license_separation_character)
         print("License separation character was found in requested license characters and has been removed")
 
     number_of_characters = len(character_list)
