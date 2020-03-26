@@ -54,9 +54,9 @@ class LicenseGenerator:
         single_serial_number_string = ""
         distance_between_serial_numbers = self.serial_characteristics_dict["total_possible_serial_numbers"] // self.requested_amount
 
-        for _ in range(self.requested_amount):
-            for i in range(self.serial_characteristics_dict["length"]):
-                single_serial_number_string += self.list_of_character_lists[i][self.index_list.at(i)]
+        for i in range(self.requested_amount):
+            for j in range(self.serial_characteristics_dict["length"]):
+                single_serial_number_string += self.list_of_character_lists[j][self.index_list.at(j)]
 
             # This should never occur, based on the algorithm, however, it is better safe than
             # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
@@ -64,7 +64,10 @@ class LicenseGenerator:
             if self.index_list.has_overflowed:
                 raise ValueError("Index List has overflowed.")
 
-            serial_file.write(single_serial_number_string + self.file_options_dict["license_separator_character"])
+            if i < self.requested_amount - 1:
+                single_serial_number_string += self.file_options_dict["license_separator_character"]
+
+            serial_file.write(single_serial_number_string)
             single_serial_number_string = ""
 
             # print(self.index_list.get_index_string())
