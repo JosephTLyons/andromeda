@@ -25,6 +25,7 @@ def get_serial_characteristics_dict(license_separation_character):
 
     if license_separation_character != "\n" and license_separation_character in character_list:
         character_list.remove(license_separation_character)
+        print()
         print("License separation character was found in requested license characters and has been removed")
 
     number_of_characters = len(character_list)
