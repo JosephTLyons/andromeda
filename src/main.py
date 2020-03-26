@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from file_options import FileOptions
 from license_generator import LicenseGenerator
 from serial_characteristics import SerialCharacteristics
 
@@ -7,9 +8,11 @@ from serial_characteristics import SerialCharacteristics
 def main():
     print()
 
-    requested_amount = int(input("Serial number amount: "))
-    serial_characteristics = SerialCharacteristics()
-    LicenseGenerator(requested_amount, serial_characteristics).generate()
+    LicenseGenerator(
+        int(input("Serial number amount: ")),
+        SerialCharacteristics(),
+        FileOptions(),
+    ).generate()
 
     print()
 

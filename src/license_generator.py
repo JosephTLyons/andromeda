@@ -1,20 +1,25 @@
 from pathlib import Path
 from random import shuffle
 
+from file_options import FileOptions
 from index_list import IndexList
 from serial_characteristics import SerialCharacteristics
 
 
 class LicenseGenerator:
-    def __init__(self, requested_amount, serial_characteristics):
+    def __init__(self, requested_amount, serial_characteristics, file_options):
         self.requested_amount = requested_amount
         self.serial_characteristics = serial_characteristics
+        self.file_options = file_options
 
         self.list_of_character_lists = self.__create_list_of_character_lists()
         self.index_list = IndexList(self.serial_characteristics.len,
                                     self.serial_characteristics.number_of_characters)
 
-        self.file_name = str(self.requested_amount) + "_unique_serials.txt"
+        self.file_name = str(self.requested_amount) \
+            + "_unique_serials" \
+            + "." \
+            + self.file_options.file_extension
 
     def generate(self):
         if (self.serial_characteristics.total_possible_serial_numbers < self.requested_amount):
@@ -61,7 +66,7 @@ class LicenseGenerator:
             if self.index_list.has_over_flown:
                 raise ValueError("Index List has overflown.")
 
-            serial_file.write(single_serial_number_string + "\n")
+            serial_file.write(single_serial_number_string + self.file_options.license_separator)
             single_serial_number_string = ""
 
             # print(self.index_list.get_index_string())
