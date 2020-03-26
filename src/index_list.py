@@ -18,7 +18,6 @@ class IndexList:
 
             if (self.indexList[i] >= self.base):
                 self.__carry_over(i)
-
             elif amount <= 0:
                 return
 

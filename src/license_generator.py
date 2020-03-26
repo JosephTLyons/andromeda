@@ -32,8 +32,7 @@ class LicenseGenerator:
 
         for i in range(self.serial_characteristics.len):
             shuffle(self.serial_characteristics.character_list)
-            list_of_character_lists.append(
-                self.serial_characteristics.character_list.copy())
+            list_of_character_lists.append(self.serial_characteristics.character_list.copy())
 
         return list_of_character_lists
 
@@ -54,8 +53,7 @@ class LicenseGenerator:
 
         for _ in range(self.requested_amount):
             for i in range(self.serial_characteristics.len):
-                single_serial_number_string += self.list_of_character_lists[i][self.index_list.at(
-                    i)]
+                single_serial_number_string += self.list_of_character_lists[i][self.index_list.at(i)]
 
             # This should never occur, based on the algorithm, however, it is better safe than
             # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
