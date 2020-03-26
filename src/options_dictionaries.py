@@ -2,10 +2,10 @@ from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 
 def get_file_options_dict():
-    license_separator = input("License separator (keep blank for newline): ")
+    license_separator_character = input("License separator character (keep blank for newline): ")
 
-    if license_separator == "":
-        license_separator = "\n"
+    if license_separator_character == "" or len(license_separator_character) > 1:
+        license_separator_character = "\n"
 
     file_extension = input("File extension (keep blank for txt): ")
 
@@ -13,15 +13,20 @@ def get_file_options_dict():
         file_extension = "txt"
 
     file_options_dict = {
-        "license_separator": license_separator,
+        "license_separator_character": license_separator_character,
         "file_extension": file_extension.replace(".", "")
     }
 
     return file_options_dict
 
-def get_serial_characteristics_dict():
+def get_serial_characteristics_dict(license_character_to_omit):
     length = int(input("Serial number length: "))
     character_list = __create_character_list()
+
+    if license_character_to_omit != "\n" and license_character_to_omit in character_list:
+        character_list.remove(license_character_to_omit)
+        print("License separation character was found in requested license characters and has been removed")
+
     number_of_characters = len(character_list)
     total_possible_serial_numbers = number_of_characters ** length
 

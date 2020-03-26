@@ -64,7 +64,7 @@ class LicenseGenerator:
             if self.index_list.has_over_flown:
                 raise ValueError("Index List has overflown.")
 
-            serial_file.write(single_serial_number_string + self.file_options_dict["license_separator"])
+            serial_file.write(single_serial_number_string + self.file_options_dict["license_separator_character"])
             single_serial_number_string = ""
 
             # print(self.index_list.get_index_string())
