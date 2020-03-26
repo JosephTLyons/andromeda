@@ -5,10 +5,10 @@ from index_list import IndexList
 
 
 class LicenseGenerator:
-    def __init__(self, requested_amount, serial_characteristics_dict, file_options_dict):
+    def __init__(self, requested_amount, file_options_dict, serial_characteristics_dict):
         self.requested_amount = requested_amount
-        self.serial_characteristics_dict = serial_characteristics_dict
         self.file_options_dict = file_options_dict
+        self.serial_characteristics_dict = serial_characteristics_dict
 
         self.list_of_character_lists = self.__create_list_of_character_lists()
         self.index_list = IndexList(self.serial_characteristics_dict["length"],

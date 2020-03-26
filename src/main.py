@@ -9,8 +9,8 @@ def main():
 
     LicenseGenerator(
         int(input("Serial number amount: ")),
-        get_serial_characteristics_dict(),
         get_file_options_dict(),
+        get_serial_characteristics_dict(),
     ).generate()
 
     print()
