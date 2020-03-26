@@ -7,13 +7,13 @@ from options_dictionaries import get_file_options_dict, get_serial_characteristi
 def main():
     print()
 
-    serial_number_amount = int(input("Serial number amount: "))
     file_options_dict = get_file_options_dict()
+    serial_number_amount = int(input("Serial number amount: "))
     serial_characteristics_dict = get_serial_characteristics_dict(file_options_dict["license_separator_character"])
 
     LicenseGenerator(
-        serial_number_amount,
         file_options_dict,
+        serial_number_amount,
         serial_characteristics_dict,
     ).generate()
 
