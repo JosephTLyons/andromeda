@@ -5,29 +5,27 @@ from index_list import IndexList
 
 
 class LicenseGenerator:
-    def __init__(self, file_options_dict, requested_amount, serial_characteristics_dict):
-        self.requested_amount = requested_amount
+    def __init__(self, file_options_dict, batch_license_dict, serial_characteristics_dict):
         self.file_options_dict = file_options_dict
+        self.batch_license_dict = batch_license_dict
         self.serial_characteristics_dict = serial_characteristics_dict
 
         self.list_of_character_lists = self.__create_list_of_character_lists()
         self.index_list = IndexList(self.serial_characteristics_dict["length"],
                                     self.serial_characteristics_dict["number_of_characters"])
 
-        self.file_name = str(self.requested_amount) \
+        self.file_name = str(self.batch_license_dict["serial_number_amount"]) \
             + "_unique_serials" \
             + "." \
             + self.file_options_dict["file_extension"]
 
     def generate(self):
-        if (self.serial_characteristics_dict["total_possible_serial_numbers"] < self.requested_amount):
+        if (self.serial_characteristics_dict["total_possible_serial_numbers"] < self.batch_license_dict["serial_number_amount"]):
             self.__print_error_message()
             return
 
         self.__print_serial_numbers_to_file()
-        print()
         self.__print_path_to_terminal()
-        print()
         self.__print_stats_to_terminal()
 
     def __create_list_of_character_lists(self):
@@ -40,7 +38,7 @@ class LicenseGenerator:
         return list_of_character_lists
 
     def __print_error_message(self):
-        print("Requested serial number amount: {}".format(self.requested_amount))
+        print("Requested serial number amount: {}".format(self.batch_license_dict["serial_number_amount"]))
         print("Total possible serial numbers given current inputs: ", end='')
         print(self.serial_characteristics_dict["total_possible_serial_numbers"])
         print("Try one or more of the following:")
@@ -51,9 +49,9 @@ class LicenseGenerator:
     def __print_serial_numbers_to_file(self):
         with open(self.file_name, "w") as serial_file:
             single_serial_number_string = ""
-            distance_between_serial_numbers = self.serial_characteristics_dict["total_possible_serial_numbers"] // self.requested_amount
+            distance_between_serial_numbers = self.serial_characteristics_dict["total_possible_serial_numbers"] // self.batch_license_dict["serial_number_amount"]
 
-            for i in range(self.requested_amount):
+            for i in range(self.batch_license_dict["serial_number_amount"]):
                 for j in range(self.serial_characteristics_dict["length"]):
                     single_serial_number_string += self.list_of_character_lists[j][self.index_list.at(j)]
 
@@ -63,8 +61,8 @@ class LicenseGenerator:
                 if self.index_list.has_overflowed:
                     raise ValueError("Index List has overflowed.")
 
-                if i < self.requested_amount - 1:
-                    single_serial_number_string += self.file_options_dict["license_separator_character"]
+                if i < self.batch_license_dict["serial_number_amount"] - 1:
+                    single_serial_number_string += self.batch_license_dict["license_separator_character"]
 
                 serial_file.write(single_serial_number_string)
                 single_serial_number_string = ""
@@ -77,12 +75,12 @@ class LicenseGenerator:
         print("File path: {}".format(file_path))
 
     def __print_stats_to_terminal(self):
-        self.__print_requested_amount()
+        self.__print_serial_number_amount()
         self.__print_total_possible_serial_numbers()
         self.__print_percent_of_license_pool_covered()
 
-    def __print_requested_amount(self):
-        print("Requested serial number amount: " + str(self.requested_amount))
+    def __print_serial_number_amount(self):
+        print("Requested serial number amount: " + str(self.batch_license_dict["serial_number_amount"]))
 
     def __print_total_possible_serial_numbers(self):
         print("Total possible serial numbers given current inputs: ", end='')
@@ -94,10 +92,10 @@ class LicenseGenerator:
 
     def __print_percent_of_license_pool_covered(self):
         print("License pool coverage: (", end='')
-        print(str(self.requested_amount) + " / ", end='')
+        print(str(self.batch_license_dict["serial_number_amount"]) + " / ", end='')
         print("(" + str(self.serial_characteristics_dict["number_of_characters"]), end='')
         print("^", end='')
         print(str(self.serial_characteristics_dict["length"]) + ")) * 100 = ", end='')
-        print(((self.requested_amount /
+        print(((self.batch_license_dict["serial_number_amount"] /
                 self.serial_characteristics_dict["total_possible_serial_numbers"]) * 100), end='')
         print("%")

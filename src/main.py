@@ -1,24 +1,38 @@
 #!/usr/bin/env python3
 
 from license_generator import LicenseGenerator
-from options_dictionaries import get_file_options_dict, get_serial_characteristics_dict
+from options_dictionaries import get_batch_license_dict, get_file_options_dict, get_serial_characteristics_dict
 
 
 def main():
     print()
 
+    print_header("File Options")
     file_options_dict = get_file_options_dict()
-    serial_number_amount = int(input("Serial number amount: "))
-    serial_characteristics_dict = get_serial_characteristics_dict(file_options_dict["license_separator_character"])
+    print()
+
+    print_header("Batch Options")
+    batch_license_dict = get_batch_license_dict()
+    print()
+
+    print_header("Serial Characteristics Options")
+    serial_characteristics_dict = get_serial_characteristics_dict(batch_license_dict["license_separator_character"])
+    print()
+
+    print_header("Results")
 
     LicenseGenerator(
         file_options_dict,
-        serial_number_amount,
+        batch_license_dict,
         serial_characteristics_dict,
     ).generate()
 
     print()
 
+def print_header(header):
+    print(header)
+    separator_line = "=" * len(header)
+    print(separator_line)
 
 if __name__ == "__main__":
     main()

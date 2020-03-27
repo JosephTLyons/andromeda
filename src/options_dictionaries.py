@@ -1,7 +1,8 @@
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
+def get_batch_license_dict():
+    serial_number_amount = int(input("Serial number amount: "))
 
-def get_file_options_dict():
     license_separator_character = ""
 
     while(len(license_separator_character) != 1):
@@ -13,13 +14,20 @@ def get_file_options_dict():
         if license_separator_character == "":
             license_separator_character = "\n"
 
+    batch_license_dict = {
+        "serial_number_amount": serial_number_amount,
+        "license_separator_character": license_separator_character,
+    }
+
+    return batch_license_dict
+
+def get_file_options_dict():
     file_extension = input("File extension (keep blank for txt): ")
 
     if file_extension == "":
         file_extension = "txt"
 
     file_options_dict = {
-        "license_separator_character": license_separator_character,
         "file_extension": file_extension.replace(".", "")
     }
 
