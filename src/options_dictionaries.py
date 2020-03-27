@@ -1,7 +1,7 @@
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 def get_batch_license_dict():
-    serial_number_amount = int(input("Serial number amount: "))
+    number_or_licenses = int(input("Number of licenses: "))
 
     license_separator_character = ""
 
@@ -15,7 +15,7 @@ def get_batch_license_dict():
             license_separator_character = "\n"
 
     batch_license_dict = {
-        "serial_number_amount": serial_number_amount,
+        "number_or_licenses": number_or_licenses,
         "license_separator_character": license_separator_character,
     }
 
@@ -33,8 +33,8 @@ def get_file_options_dict():
 
     return file_options_dict
 
-def get_serial_characteristics_dict(license_separation_character):
-    length = int(input("Serial number length: "))
+def get_license_characteristics_dict(license_separation_character):
+    length = int(input("License number length: "))
     character_list = __create_character_list()
 
     if license_separation_character != "\n" and license_separation_character in character_list:
@@ -43,16 +43,16 @@ def get_serial_characteristics_dict(license_separation_character):
         print("License separation character was found in requested license characters and has been removed")
 
     number_of_characters = len(character_list)
-    total_possible_serial_numbers = number_of_characters ** length
+    total_possible_licenses = number_of_characters ** length
 
-    serial_characteristics_dict = {
+    license_characteristics_dict = {
         "length": length,
         "character_list": character_list,
         "number_of_characters": number_of_characters,
-        "total_possible_serial_numbers": total_possible_serial_numbers,
+        "total_possible_licenses": total_possible_licenses,
     }
 
-    return serial_characteristics_dict
+    return license_characteristics_dict
 
 def __create_character_list():
     character_list = []

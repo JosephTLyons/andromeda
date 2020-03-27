@@ -3,4 +3,4 @@ __pycache__
 .idea
 .pytest_cache
 .vscode/*
-*_unique_serials.*
+*_unique_licenses.*

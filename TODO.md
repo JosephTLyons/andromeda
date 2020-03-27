@@ -4,7 +4,7 @@
 
 - Any Python optimizations
 - Write unit tests?
-- Have user enter in options first and display the total number of serials
+- Have user enter in options first and display the total number of licenses
   possible before asking how many they want?
 - Context manager for opening an closing files
 
