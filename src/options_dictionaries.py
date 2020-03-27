@@ -1,7 +1,7 @@
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 def get_batch_license_dict():
-    number_or_licenses = int(input("Number of licenses: "))
+    number_of_licenses = int(input("Number of licenses: "))
 
     license_separator_character = ""
 
@@ -15,7 +15,7 @@ def get_batch_license_dict():
             license_separator_character = "\n"
 
     batch_license_dict = {
-        "number_or_licenses": number_or_licenses,
+        "number_of_licenses": number_of_licenses,
         "license_separator_character": license_separator_character,
     }
 
@@ -34,7 +34,7 @@ def get_file_options_dict():
     return file_options_dict
 
 def get_license_characteristics_dict(license_separation_character):
-    length = int(input("License number length: "))
+    length = int(input("License length: "))
     character_list = __create_character_list()
 
     if license_separation_character != "\n" and license_separation_character in character_list:

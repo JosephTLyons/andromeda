@@ -14,13 +14,13 @@ class LicenseGenerator:
         self.index_list = IndexList(self.license_characteristics_dict["length"],
                                     self.license_characteristics_dict["number_of_characters"])
 
-        self.file_name = str(self.batch_license_dict["number_or_licenses"]) \
+        self.file_name = str(self.batch_license_dict["number_of_licenses"]) \
             + "_unique_licenses" \
             + "." \
             + self.file_options_dict["file_extension"]
 
     def generate(self):
-        if (self.license_characteristics_dict["total_possible_licenses"] < self.batch_license_dict["number_or_licenses"]):
+        if (self.license_characteristics_dict["total_possible_licenses"] < self.batch_license_dict["number_of_licenses"]):
             self.__print_error_message()
             return
 
@@ -38,7 +38,7 @@ class LicenseGenerator:
         return list_of_character_lists
 
     def __print_error_message(self):
-        print("Requested license number amount: {}".format(self.batch_license_dict["number_or_licenses"]))
+        print("Requested number of licenses: {}".format(self.batch_license_dict["number_of_licenses"]))
         print("Total possible licenses given current inputs: ", end='')
         print(self.license_characteristics_dict["total_possible_licenses"])
         print("Try one or more of the following:")
@@ -47,11 +47,11 @@ class LicenseGenerator:
         print("- Decreasing the amount of licenses to be generated")
 
     def __print_licenses_to_file(self):
-        with open(self.file_name, "w") as serial_file:
+        with open(self.file_name, "w") as license_file:
             single_license_string = ""
-            distance_between_licenses = self.license_characteristics_dict["total_possible_licenses"] // self.batch_license_dict["number_or_licenses"]
+            distance_between_licenses = self.license_characteristics_dict["total_possible_licenses"] // self.batch_license_dict["number_of_licenses"]
 
-            for i in range(self.batch_license_dict["number_or_licenses"]):
+            for i in range(self.batch_license_dict["number_of_licenses"]):
                 for j in range(self.license_characteristics_dict["length"]):
                     single_license_string += self.list_of_character_lists[j][self.index_list.at(j)]
 
@@ -61,10 +61,10 @@ class LicenseGenerator:
                 if self.index_list.has_overflowed:
                     raise ValueError("Index List has overflowed.")
 
-                if i < self.batch_license_dict["number_or_licenses"] - 1:
+                if i < self.batch_license_dict["number_of_licenses"] - 1:
                     single_license_string += self.batch_license_dict["license_separator_character"]
 
-                serial_file.write(single_license_string)
+                license_file.write(single_license_string)
                 single_license_string = ""
 
                 # print(self.index_list.get_index_string())
@@ -75,15 +75,15 @@ class LicenseGenerator:
         print("File path: {}".format(file_path))
 
     def __print_stats_to_terminal(self):
-        self.__print_number_or_licenses()
+        self.__print_number_of_licenses()
         self.__print_total_possible_licenses()
         self.__print_percent_of_license_pool_covered()
 
-    def __print_number_or_licenses(self):
-        print("Requested license number amount: " + str(self.batch_license_dict["number_or_licenses"]))
+    def __print_number_of_licenses(self):
+        print("Requested number of licenses: " + str(self.batch_license_dict["number_of_licenses"]))
 
     def __print_total_possible_licenses(self):
-        print("Total possible license numbers given current inputs: ", end='')
+        print("Total possible number of licenses given current inputs: ", end='')
         print(self.license_characteristics_dict["number_of_characters"], end='')
         print("^", end='')
         print(self.license_characteristics_dict["length"], end='')
@@ -92,10 +92,10 @@ class LicenseGenerator:
 
     def __print_percent_of_license_pool_covered(self):
         print("License pool coverage: (", end='')
-        print(str(self.batch_license_dict["number_or_licenses"]) + " / ", end='')
+        print(str(self.batch_license_dict["number_of_licenses"]) + " / ", end='')
         print("(" + str(self.license_characteristics_dict["number_of_characters"]), end='')
         print("^", end='')
         print(str(self.license_characteristics_dict["length"]) + ")) * 100 = ", end='')
-        print(((self.batch_license_dict["number_or_licenses"] /
+        print(((self.batch_license_dict["number_of_licenses"] /
                 self.license_characteristics_dict["total_possible_licenses"]) * 100), end='')
         print("%")

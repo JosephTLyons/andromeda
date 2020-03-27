@@ -25,7 +25,7 @@ License separator character (keep blank for newline):
 
 License Characteristics Options
 ===============================
-License number length: 20
+License length: 20
 Enter 'y' to use numbers: y
 Enter 'y' to use uppercase letters: y
 Enter 'y' to use lowercase letters: y
@@ -34,8 +34,8 @@ Enter 'y' to use symbols: n
 Results
 =======
 File path: /Users/josephlyons/Programming/Python/andromeda/src/1000_unique_licenses.txt
-Requested license number amount: 1000
-Total possible license numbers given current inputs: 62^20 = 704423425546998022968330264616370176
+Requested number of licenses: 1000
+Total possible number of licenses given current inputs: 62^20 = 704423425546998022968330264616370176
 License pool coverage: (1000 / (62^20)) * 100 = 1.4196007170310687e-31%
 ```
 
@@ -64,10 +64,10 @@ dFheZibfSFeXVlPfzeSg
 
 ## How it Works
 1. Check to make sure that it is possible to create the amount of unique
-   licenses requested based on the the license number length and character set.
-   For example, if the user requests `1,000,000` unique licenses, but only asks
-   for licenses of length `4` and wants only numbers as characters, it will not
-   be possible, as `10^4 < 1,000,000`.  We must have more possible combinations
+   licenses requested based on the the license length and character set. For
+   example, if the user requests `1,000,000` unique licenses, but only asks for
+   licenses of length `4` and wants only numbers as characters, it will not be
+   possible, as `10^4 < 1,000,000`.  We must have more possible combinations
    than the number of licenses requested in order to ensure all licenses will be
    unique.
 2. Make a `characterList` that is comprised of all the symbols the user wishes
@@ -168,7 +168,7 @@ License separator character (keep blank for newline):
 
 License Characteristics Options
 ===============================
-License number length: 4
+License length: 4
 Enter 'y' to use numbers: y
 Enter 'y' to use uppercase letters: n
 Enter 'y' to use lowercase letters: n
@@ -177,8 +177,8 @@ Enter 'y' to use symbols: n
 Results
 =======
 File path: /Users/josephlyons/Programming/Python/andromeda/src/1000_unique_licenses.txt
-Requested license number amount: 1000
-Total possible license numbers given current inputs: 10^4 = 10000
+Requested number of licenses: 1000
+Total possible number of licenses given current inputs: 10^4 = 10000
 License pool coverage: (1000 / (10^4)) * 100 = 10.0%
 ```
 
@@ -208,6 +208,6 @@ Notice that the licenses are fairly similar.  Also, note that it would be fairly
 easy to guess a license.  The probability that a random guess would be an actual
 license is `1000/(10^4) = 0.1`.  It is up to the user to understand this and
 adjust the settings to increase the complexity of the output and decrease the
-chances of guessing a license number.  Using the example from earlier with
-`1000` licenses of length `20` using all symbols, the probability that a random
-guess would be an actual license is `1000/(62^20) = 1.4196007e-33`.
+chances of guessing a license.  Using the example from earlier with `1000`
+licenses of length `20` using all symbols, the probability that a random guess
+would be an actual license is `1000/(62^20) = 1.4196007e-33`.
