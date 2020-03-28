@@ -108,12 +108,11 @@ Using the example from earlier, our licenses are of length `20` and use `62`
 types of symbols (`10` numbers + `26` lowercase letters + `26` uppercase
 letters).  We have `62^20` possible unique license combinations.  Because we
 want `1000` licenses, the spacing between licenses to be printed to the file is
-`(62^20) / 1000 = 704423425546998022968330264616370176`.  If we set
-`n = 704423425546998022968330264616370176`, then the function
-`increaseIndexVectorBy()` efficiently applies this number to the `indexList` in
-roughly `log(n) with base 62` operations.  Using this method, we are able to
-print licenses that are equally spaced apart in the total combination space, as
-shown in the first sample output earlier.
+`(62^20) / 1000 = 7.04423425546998e+32`.  If we set `n = 7.04423425546998e+32`,
+then the function `increaseIndexVectorBy()` efficiently applies this number to
+the `indexList` in roughly `log(n) with base 62` operations.  Using this method,
+we are able to print licenses that are equally spaced apart in the total
+combination space, as shown in the first sample output earlier.
 
 We can even print all of the values of the `indexListr` to the terminal to see
 the patterns better by uncommenting the function `printIndexList()`:
@@ -206,8 +205,8 @@ the output will be:
 
 Notice that the licenses are fairly similar.  Also, note that it would be fairly
 easy to guess a license.  The probability that a random guess would be an actual
-license is `1000/(10^4) = 0.1`.  It is up to the user to understand this and
+license is `1000 / (10^4) = 0.1`.  It is up to the user to understand this and
 adjust the settings to increase the complexity of the output and decrease the
 chances of guessing a license.  Using the example from earlier with `1000`
 licenses of length `20` using all symbols, the probability that a random guess
-would be an actual license is `1000/(62^20) = 1.4196007e-33`.
+would be an actual license is `1000 / (62^20) = 1.4196007e-33`.
