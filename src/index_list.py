@@ -14,7 +14,7 @@ class IndexList:
             if (i == 0) and (amount + self.indexList[i] >= self.base):
                 self.has_overflowed = True
 
-            amount = amount // self.base
+            amount //= self.base
 
             if self.indexList[i] >= self.base:
                 self.__carry_over(i)
