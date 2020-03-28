@@ -3,7 +3,7 @@ import pytest
 from index_list import IndexList
 
 
-class TestIndexList():
+class TestIndexList:
     def test_base_rollover_increase_by_1(self):
         length = 2
         base = 2
