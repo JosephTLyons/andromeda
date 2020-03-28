@@ -27,7 +27,7 @@ class TestIndexList():
             index_list.increase_by(1)
 
         assert [0, 0] == self.__make_list(index_list)
-        assert index_list.has_overflowed == True
+        assert index_list.has_overflowed
 
     def test_base_rollover_with_overflow_plus_remainder(self):
         length = 2
