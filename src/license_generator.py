@@ -20,7 +20,7 @@ class LicenseGenerator:
             + self.file_options_dict["file_extension"]
 
     def generate(self):
-        if (self.license_characteristics_dict["total_possible_licenses"] < self.batch_license_dict["number_of_licenses"]):
+        if self.license_characteristics_dict["total_possible_licenses"] < self.batch_license_dict["number_of_licenses"]:
             self.__print_error_message()
             return
 
