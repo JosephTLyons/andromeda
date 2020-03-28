@@ -28,7 +28,7 @@ class IndexList:
             self.indexList[index - 1] += 1
 
     def get_index_string(self):
-        padding = 1 if (self.base <= 10) else 2
+        padding = len(str(self.base))
 
         index_string = ""
 
