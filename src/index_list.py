@@ -16,7 +16,7 @@ class IndexList:
 
             amount = amount // self.base
 
-            if (self.indexList[i] >= self.base):
+            if self.indexList[i] >= self.base:
                 self.__carry_over(i)
             elif amount <= 0:
                 return
@@ -24,7 +24,7 @@ class IndexList:
     def __carry_over(self, index):
         self.indexList[index] -= self.base
 
-        if (index > 0):
+        if index > 0:
             self.indexList[index - 1] += 1
 
     def get_index_string(self):

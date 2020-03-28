@@ -6,7 +6,7 @@ def get_batch_license_dict():
 
     license_separator_character = ""
 
-    while(len(license_separator_character) != 1):
+    while len(license_separator_character) != 1:
         license_separator_character = input("License separator character (keep blank for newline): ")
 
         if len(license_separator_character) > 1:
@@ -61,16 +61,16 @@ def get_license_characteristics_dict(license_separation_character):
 def __create_character_list():
     character_list = []
 
-    if ("y" == input("Enter 'y' to use numbers: ")):
+    if "y" == input("Enter 'y' to use numbers: "):
         character_list += digits
 
-    if ("y" == input("Enter 'y' to use uppercase letters: ")):
+    if "y" == input("Enter 'y' to use uppercase letters: "):
         character_list += ascii_uppercase
 
-    if ("y" == input("Enter 'y' to use lowercase letters: ")):
+    if "y" == input("Enter 'y' to use lowercase letters: "):
         character_list += ascii_lowercase
 
-    if ("y" == input("Enter 'y' to use symbols: ")):
+    if "y" == input("Enter 'y' to use symbols: "):
         character_list += punctuation
 
     return character_list
