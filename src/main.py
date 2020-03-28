@@ -29,6 +29,7 @@ def main():
 
     print()
 
+
 def print_header(header):
     print(header)
     separator_line = "=" * len(header)
@@ -36,3 +37,4 @@ def print_header(header):
 
 if __name__ == "__main__":
     main()
+

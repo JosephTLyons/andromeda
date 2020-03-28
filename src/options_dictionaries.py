@@ -1,5 +1,6 @@
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
+
 def get_batch_license_dict():
     number_of_licenses = int(input("Number of licenses: "))
 
@@ -21,6 +22,7 @@ def get_batch_license_dict():
 
     return batch_license_dict
 
+
 def get_file_options_dict():
     file_extension = input("File extension (keep blank for txt): ")
 
@@ -32,6 +34,7 @@ def get_file_options_dict():
     }
 
     return file_options_dict
+
 
 def get_license_characteristics_dict(license_separation_character):
     length = int(input("License length: "))
@@ -53,6 +56,7 @@ def get_license_characteristics_dict(license_separation_character):
     }
 
     return license_characteristics_dict
+
 
 def __create_character_list():
     character_list = []
