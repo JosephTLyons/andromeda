@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 from license_generator import LicenseGenerator
-from options_dictionaries import get_batch_license_dict, get_file_options_dict, get_license_characteristics_dict
+from options_dictionaries import get_batch_license_dict, get_file_options_dict, \
+    get_license_characteristics_dict
 
 
 def main():
@@ -16,7 +17,9 @@ def main():
     print()
 
     print_header("License Characteristics Options")
-    license_characteristics_dict = get_license_characteristics_dict(batch_license_dict["license_separator_character"])
+    license_characteristics_dict = get_license_characteristics_dict(
+        batch_license_dict["license_separator_character"]
+    )
     print()
 
     print_header("Results")

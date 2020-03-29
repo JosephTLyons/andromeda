@@ -7,7 +7,9 @@ def get_batch_license_dict():
     license_separator_character = ""
 
     while len(license_separator_character) != 1:
-        license_separator_character = input("License separator character (keep blank for newline): ")
+        license_separator_character = input(
+            "License separator character (keep blank for newline): "
+        )
 
         if len(license_separator_character) > 1:
             print("Only a single character can be used for a license separator character")
@@ -43,7 +45,10 @@ def get_license_characteristics_dict(license_separation_character):
     if license_separation_character != "\n" and license_separation_character in character_list:
         character_list.remove(license_separation_character)
         print()
-        print("License separation character was found in requested license characters and has been removed")
+        print(
+            "License separation character was found in requested license characters and has been \
+            removed"
+        )
 
     number_of_characters = len(character_list)
     total_possible_licenses = number_of_characters ** length
