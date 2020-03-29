@@ -66,11 +66,11 @@ class TestIndexList:
     def test_init(self):
         index_list = IndexList(5, 10)
         assert [0, 0, 0, 0, 0] == self.__make_list(index_list)
-        assert 5 == index_list.len()
+        assert 5 == len(index_list)
         assert not index_list.has_overflowed
 
     def test_length(self):
-        assert 5 == IndexList(5, 10).len()
+        assert 5 == len(IndexList(5, 10))
 
     def test_increment_by_neg_error(self):
         with pytest.raises(ValueError):
@@ -90,7 +90,7 @@ class TestIndexList:
     def __make_list(self, index_list):
         new_list = []
 
-        for i in range(index_list.len()):
+        for i in range(len(index_list)):
             new_list.append(index_list[i])
 
         return new_list
