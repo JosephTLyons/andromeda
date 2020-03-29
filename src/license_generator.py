@@ -63,7 +63,7 @@ class LicenseGenerator:
 
             for i in range(self.batch_license_dict["number_of_licenses"]):
                 for j in range(self.license_characteristics_dict["length"]):
-                    single_license_string += self.list_of_character_lists[j][self.index_list.at(j)]
+                    single_license_string += self.list_of_character_lists[j][self.index_list[j]]
 
                 # This should never occur, based on the algorithm, however, it is better safe than
                 # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate

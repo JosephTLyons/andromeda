@@ -4,6 +4,12 @@ class IndexList:
         self.base = base
         self.has_overflowed = False
 
+    def __getitem__(self, index):
+        return self.indexList[index]
+
+    def __len__(self):
+        return len(self.indexList)
+
     def increase_by(self, amount):
         if amount <= 0:
             raise ValueError("Must increment by a positive value")
@@ -36,9 +42,3 @@ class IndexList:
             index_string += (str(index).rjust(padding, '0') + " ")
 
         return index_string
-
-    def at(self, index):
-        return self.indexList[index]
-
-    def len(self):
-        return len(self.indexList)

@@ -91,6 +91,6 @@ class TestIndexList:
         new_list = []
 
         for i in range(index_list.len()):
-            new_list.append(index_list.at(i))
+            new_list.append(index_list[i])
 
         return new_list
