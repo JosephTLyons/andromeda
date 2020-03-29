@@ -26,7 +26,7 @@ class LicenseGenerator:
 
         self.__print_licenses_to_file()
         self.__print_path_to_terminal()
-        self.__print_stats_to_terminal()
+        self.__print_statistics_to_terminal()
 
     def __create_list_of_character_lists(self):
         list_of_character_lists = []
@@ -74,7 +74,7 @@ class LicenseGenerator:
         file_path = Path.cwd().joinpath(self.file_name)
         print("File path: {}".format(file_path))
 
-    def __print_stats_to_terminal(self):
+    def __print_statistics_to_terminal(self):
         self.__print_number_of_licenses()
         self.__print_total_possible_licenses()
         self.__print_percent_of_license_pool_covered()
