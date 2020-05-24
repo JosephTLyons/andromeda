@@ -46,8 +46,8 @@ def get_license_characteristics_dict(license_separation_character):
         character_list.remove(license_separation_character)
         print()
         print(
-            "License separation character was found in requested license characters and has been \
-            removed"
+            "License separation character was found in requested license characters and has been "
+            "removed"
         )
 
     number_of_characters = len(character_list)
