@@ -1,8 +1,10 @@
 # andromeda
+
 Quickly create large amounts of unique licenses.  Heavily
 inspired by [random code generator](https://www.randomcodegenerator.com/en/generate-serial-numbers).
 
 ## Creating Unique Licenses
+
 Making a batch of unique licenses is very simple. Run the script with:
 
 ```shell
@@ -63,6 +65,7 @@ dFheZibfSFeXVlPfzeSg
 ```
 
 ## How it Works
+
 1. Check to make sure that it is possible to create the amount of unique
    licenses requested based on the the license length and character set. For
    example, if the user requests `1,000,000` unique licenses, but only asks for
@@ -138,6 +141,7 @@ the patterns better by uncommenting the function `printIndexList()`:
 ```
 
 ## File Customization
+
 Andromeda allows you to pick you own file extension and the license separator
 character.  This means you can build license files however you like.  The
 previous example demonstrates the creation of a `.txt` file where the license
@@ -151,9 +155,10 @@ you do not want a license separator character showing up randomly in the middle
 of a license.
 
 ## Pitfalls to be Aware of
+
 Andromeda does not care if you choose settings that result in a very low pool of
-license combinations.  You should be aware of this.  If you run the application
-with the following options:
+license combinations for it to pick from.  You should be aware of this.
+Consider the following example:
 
 ```text
 File Options
@@ -181,7 +186,7 @@ Total possible number of licenses given current inputs: 10^4 = 10000
 License pool coverage: (1000 / (10^4)) * 100 = 10.0%
 ```
 
-the output will be:
+The output file produced will look something like this:
 
 ```text
 9444
@@ -204,9 +209,11 @@ the output will be:
 ```
 
 Notice that the licenses are fairly similar.  Also, note that it would be fairly
-easy to guess a license.  The probability that a random guess would be an actual
-license is `1000 / (10^4) = 0.1`.  It is up to the user to understand this and
-adjust the settings to increase the complexity of the output and decrease the
-chances of guessing a license.  Using the example from earlier with `1000`
-licenses of length `20` using all symbols, the probability that a random guess
-would be an actual license is `1000 / (62^20) = 1.4196007e-33`.
+easy to randomly guess a license.  The probability that a random guess would be
+an actual license is `1000 / (10^4) = 0.1`.  Andromeda tries to help the user by
+calculating and printing out the license pool coverage, but it is up to the user
+to understand what this means and adjust the settings to both increase the
+complexity of the output and decrease the chances of guessing a license.
+Using the example from earlier with `1000` licenses of length `20` using all
+symbols, the probability that a random guess would be an actual license is
+`1000 / (62^20) = 1.4196007e-33`.
