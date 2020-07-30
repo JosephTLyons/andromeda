@@ -35,7 +35,7 @@ class LicenseGenerator:
     def __create_list_of_character_lists(self):
         list_of_character_lists = []
 
-        for i in range(self.license_characteristics_dict["length"]):
+        for _ in range(self.license_characteristics_dict["length"]):
             shuffle(self.license_characteristics_dict["character_list"])
             list_of_character_lists.append(
                 self.license_characteristics_dict["character_list"].copy()
