@@ -9,8 +9,9 @@ class TestIndexList:
         base = 2
 
         index_list = IndexList(length, base)
+        number_of_increases = (base ** length) - 1
 
-        for _ in range((base ** length) - 1):
+        for _ in range(number_of_increases):
             index_list.increase_by(1)
 
         assert [1, 1] == index_list.index_list
@@ -23,7 +24,9 @@ class TestIndexList:
 
         assert not index_list.has_overflowed
 
-        for _ in range(base ** length):
+        number_of_increases = base ** length
+
+        for _ in range(number_of_increases):
             index_list.increase_by(1)
 
         assert [0, 0] == index_list.index_list
