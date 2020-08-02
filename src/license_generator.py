@@ -44,9 +44,7 @@ class LicenseGenerator:
         return list_of_character_lists
 
     def __print_error_message(self):
-        print(
-            "Requested number of licenses: {}".format(self.batch_license_dict["number_of_licenses"])
-        )
+        print(f"Requested number of licenses: {self.batch_license_dict['number_of_licenses']}")
         print("Total possible licenses given current inputs: ", end='')
         print(self.license_characteristics_dict["total_possible_licenses"])
         print("Try one or more of the following:")
@@ -82,7 +80,7 @@ class LicenseGenerator:
 
     def __print_path_to_terminal(self):
         file_path = Path.cwd().joinpath(self.file_name)
-        print("File path: {}".format(file_path))
+        print(f"File path: {file_path}")
 
     def __print_statistics_to_terminal(self):
         self.__print_number_of_licenses()
