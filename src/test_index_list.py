@@ -13,7 +13,7 @@ class TestIndexList:
         for _ in range((base ** length) - 1):
             index_list.increase_by(1)
 
-        assert [1, 1] == self.__make_list(index_list)
+        assert [1, 1] == index_list.index_list
 
     def test_base_rollover_with_even_overflow(self):
         length = 2
@@ -26,7 +26,7 @@ class TestIndexList:
         for _ in range(base ** length):
             index_list.increase_by(1)
 
-        assert [0, 0] == self.__make_list(index_list)
+        assert [0, 0] == index_list.index_list
         assert index_list.has_overflowed
 
     def test_base_rollover_with_overflow_plus_remainder(self):
@@ -39,7 +39,7 @@ class TestIndexList:
 
         index_list.increase_by(5)
 
-        assert [0, 1] == self.__make_list(index_list)
+        assert [0, 1] == index_list.index_list
         assert index_list.has_overflowed
 
     def test_with_various_bases(self):
@@ -52,7 +52,7 @@ class TestIndexList:
             for i in range(length):
                 index_list.increase_by(base ** i)
 
-            assert [1, 1, 1, 1, 1] == self.__make_list(index_list)
+            assert [1, 1, 1, 1, 1] == index_list.index_list
 
     def test_base_rollover_increase_by_larger_than_base(self):
         length = 3
@@ -61,11 +61,11 @@ class TestIndexList:
         index_list = IndexList(length, base)
         index_list.increase_by(20)
 
-        assert [0, 2, 0] == self.__make_list(index_list)
+        assert [0, 2, 0] == index_list.index_list
 
     def test_init(self):
         index_list = IndexList(5, 10)
-        assert [0, 0, 0, 0, 0] == self.__make_list(index_list)
+        assert [0, 0, 0, 0, 0] == index_list.index_list
         assert len(index_list) == 5
         assert not index_list.has_overflowed
 
@@ -78,19 +78,11 @@ class TestIndexList:
 
     def test_get_index_string(self):
         index_list = IndexList(5, 10)
-        assert "0 0 0 0 0 " == index_list.get_index_string()
+        assert "00 00 00 00 00 " == index_list.get_index_string()
         index_list.increase_by(15214)
-        assert "1 5 2 1 4 " == index_list.get_index_string()
+        assert "01 05 02 01 04 " == index_list.get_index_string()
 
     def test_large_increment(self):
         index_list = IndexList(5, 12)
         index_list.increase_by(92392)
-        assert [4, 5, 5, 7, 4] == self.__make_list(index_list)
-
-    def __make_list(self, index_list):
-        new_list = []
-
-        for i in range(len(index_list)):
-            new_list.append(index_list[i])
-
-        return new_list
+        assert [4, 5, 5, 7, 4] == index_list.index_list
