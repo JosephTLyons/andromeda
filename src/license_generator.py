@@ -65,7 +65,7 @@ class LicenseGenerator:
 
                 # This should never occur, based on the algorithm, however, it is better safe than
                 # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
-                # licenses could potentially be creted.
+                # licenses could potentially be created.
                 if self.index_list.has_overflowed:
                     raise ValueError("Index List has overflowed.")
 
