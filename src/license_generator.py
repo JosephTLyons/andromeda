@@ -13,18 +13,21 @@ class LicenseGenerator:
         self.list_of_character_lists = self.__create_list_of_character_lists()
         self.index_list = IndexList(
             self.license_characteristics_dict["length"],
-            self.license_characteristics_dict["number_of_characters"]
+            self.license_characteristics_dict["number_of_characters"],
         )
 
-        self.file_name = str(self.batch_license_dict["number_of_licenses"]) \
-            + "_unique_licenses" \
-            + "." \
+        self.file_name = (
+            str(self.batch_license_dict["number_of_licenses"])
+            + "_unique_licenses"
+            + "."
             + self.file_options_dict["file_extension"]
+        )
 
     def generate(self):
-        if self.license_characteristics_dict["total_possible_licenses"] < self.batch_license_dict[
-            "number_of_licenses"
-        ]:
+        if (
+            self.license_characteristics_dict["total_possible_licenses"]
+            < self.batch_license_dict["number_of_licenses"]
+        ):
             self.__print_error_message()
             return
 
@@ -45,7 +48,7 @@ class LicenseGenerator:
 
     def __print_error_message(self):
         print(f"Requested number of licenses: {self.batch_license_dict['number_of_licenses']}")
-        print("Total possible licenses given current inputs: ", end='')
+        print("Total possible licenses given current inputs: ", end="")
         print(self.license_characteristics_dict["total_possible_licenses"])
         print("Try one or more of the following:")
         print("- Increasing the length of the license")
@@ -55,9 +58,10 @@ class LicenseGenerator:
     def __print_licenses_to_file(self):
         with open(self.file_name, "w") as license_file:
             single_license_string = ""
-            distance_between_licenses = self.license_characteristics_dict[
-                "total_possible_licenses"
-            ] // self.batch_license_dict["number_of_licenses"]
+            distance_between_licenses = (
+                self.license_characteristics_dict["total_possible_licenses"]
+                // self.batch_license_dict["number_of_licenses"]
+            )
 
             for i in range(self.batch_license_dict["number_of_licenses"]):
                 for j in range(self.license_characteristics_dict["length"]):
@@ -91,19 +95,27 @@ class LicenseGenerator:
         print("Requested number of licenses: " + str(self.batch_license_dict["number_of_licenses"]))
 
     def __print_total_possible_licenses(self):
-        print("Total possible number of licenses given current inputs: ", end='')
-        print(self.license_characteristics_dict["number_of_characters"], end='')
-        print("^", end='')
-        print(self.license_characteristics_dict["length"], end='')
-        print(" = ", end='')
+        print("Total possible number of licenses given current inputs: ", end="")
+        print(self.license_characteristics_dict["number_of_characters"], end="")
+        print("^", end="")
+        print(self.license_characteristics_dict["length"], end="")
+        print(" = ", end="")
         print(self.license_characteristics_dict["total_possible_licenses"])
 
     def __print_percent_of_license_pool_covered(self):
-        print("License pool coverage: (", end='')
-        print(str(self.batch_license_dict["number_of_licenses"]) + " / ", end='')
-        print("(" + str(self.license_characteristics_dict["number_of_characters"]), end='')
-        print("^", end='')
-        print(str(self.license_characteristics_dict["length"]) + ")) * 100 = ", end='')
-        print(((self.batch_license_dict["number_of_licenses"] /
-                self.license_characteristics_dict["total_possible_licenses"]) * 100), end='')
+        print("License pool coverage: (", end="")
+        print(str(self.batch_license_dict["number_of_licenses"]) + " / ", end="")
+        print("(" + str(self.license_characteristics_dict["number_of_characters"]), end="")
+        print("^", end="")
+        print(str(self.license_characteristics_dict["length"]) + ")) * 100 = ", end="")
+        print(
+            (
+                (
+                    self.batch_license_dict["number_of_licenses"]
+                    / self.license_characteristics_dict["total_possible_licenses"]
+                )
+                * 100
+            ),
+            end="",
+        )
         print("%")

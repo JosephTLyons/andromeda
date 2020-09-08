@@ -31,9 +31,7 @@ def get_file_options_dict():
     if file_extension == "":
         file_extension = "txt"
 
-    file_options_dict = {
-        "file_extension": file_extension.replace(".", "")
-    }
+    file_options_dict = {"file_extension": file_extension.replace(".", "")}
 
     return file_options_dict
 

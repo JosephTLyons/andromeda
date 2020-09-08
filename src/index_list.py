@@ -39,6 +39,6 @@ class IndexList:
         index_string = ""
 
         for index in self.index_list:
-            index_string += (str(index).rjust(padding, "0") + " ")
+            index_string += str(index).rjust(padding, "0") + " "
 
         return index_string
