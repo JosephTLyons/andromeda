@@ -110,12 +110,10 @@ class LicenseGenerator:
         print(str(self.license_characteristics_dict["length"]) + ")) * 100 = ", end="")
         print(
             (
-                (
-                    self.batch_license_dict["number_of_licenses"]
-                    / self.license_characteristics_dict["total_possible_licenses"]
-                )
-                * 100
-            ),
+                self.batch_license_dict["number_of_licenses"]
+                / self.license_characteristics_dict["total_possible_licenses"]
+            )
+            * 100,
             end="",
         )
         print("%")
