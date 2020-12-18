@@ -211,9 +211,14 @@ The output file produced will look something like this:
 Notice that the licenses are fairly similar.  Also, note that it would be fairly
 easy to randomly guess a license.  The probability that a random guess would be
 an actual license is `1000 / (10^4) = 0.1`.  Andromeda tries to help the user by
-calculating and printing out the license pool coverage, but it is up to the user
-to understand what this means and adjust the settings to both increase the
-complexity of the output and decrease the chances of guessing a license.
-Using the example from earlier with `1000` licenses of length `20` using all
-symbols, the probability that a random guess would be an actual license is
-`1000 / (62^20) = 1.4196007e-33`.
+calculating and printing out the license pool coverage:
+
+```text
+License pool coverage: (1000 / (10^4)) * 100 = 10.0%
+```
+
+but it is ultimately up to the user to understand what this means and adjust the
+settings to both increase the complexity of the output and decrease the chances
+of guessing a license.  Using the example from earlier with `1000` licenses of
+length `20` using all symbols, the probability that a random guess would be an
+actual license is `1000 / (62^20) = 1.4196007e-33`.
