@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from license_generator import LicenseGenerator
 from options_dictionaries import (
     get_batch_license_dict,
