@@ -2,6 +2,7 @@ from pathlib import Path
 from random import shuffle
 
 from index_list import IndexList
+from src.exceptions import Unreachable
 
 
 class LicenseGenerator:
@@ -71,7 +72,7 @@ class LicenseGenerator:
                 # sorry.  If somehow the list could overflow, it returns back to 0 and duplicate
                 # licenses could potentially be created.
                 if self.index_list.has_overflowed:
-                    raise ValueError("Index List has overflowed.")
+                    raise Unreachable("Index List has overflowed.")
 
                 if i < self.batch_license_dict["number_of_licenses"] - 1:
                     single_license_string += self.batch_license_dict["license_separator_character"]
