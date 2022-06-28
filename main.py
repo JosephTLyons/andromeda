@@ -1,5 +1,5 @@
-from license_generator import LicenseGenerator
-from options_dictionaries import (
+from src.license_generator import LicenseGenerator
+from src.options_dictionaries import (
     get_batch_license_dict,
     get_file_options_dict,
     get_license_characteristics_dict,
