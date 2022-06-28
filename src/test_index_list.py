@@ -1,6 +1,6 @@
 import pytest
 
-from index_list import IndexList
+from src.index_list import IndexList
 
 
 class TestIndexList:

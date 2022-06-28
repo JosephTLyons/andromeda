@@ -1,7 +1,7 @@
 from pathlib import Path
 from random import shuffle
 
-from index_list import IndexList
+from src.index_list import IndexList
 from src.exceptions import Unreachable
 
 
