@@ -65,15 +65,15 @@ def __create_character_list():
     character_list = []
 
     if "y" == input("Enter 'y' to use numbers: "):
-        character_list += digits
+        character_list.extend(digits)
 
     if "y" == input("Enter 'y' to use uppercase letters: "):
-        character_list += ascii_uppercase
+        character_list.extend(ascii_uppercase)
 
     if "y" == input("Enter 'y' to use lowercase letters: "):
-        character_list += ascii_lowercase
+        character_list.extend(ascii_lowercase)
 
     if "y" == input("Enter 'y' to use symbols: "):
-        character_list += punctuation
+        character_list.extend(punctuation)
 
     return character_list
